@@ -9,12 +9,12 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import RegisteredList from "./Register";
 import NotificationTab from "./Notification";
 import { TabContainer, TabsBox, TabsLink, TabsBody, BoxMargin, iconColor } from "./style";
-import { makeStyles } from '@mui/styles';
+import styled from '@emotion/styled'
 
-const useStyles = makeStyles({
+const useStyles = styled({
     tabs: {
 
-        "& .MuiTabs-indicator": {
+        "& .MuiTab-root.indicator": {
             backgroundColor: "transparent",
             height: 3,
             BorderAllRounded: 2,
