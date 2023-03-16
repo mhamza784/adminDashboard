@@ -18,7 +18,7 @@ const NewMessagesUI = ({ handleListItemClick }) => {
             <Box component="text" sx={mainHeading}>
                 Registered Members
             </Box>
-            <Paper elevation={2} sx={{ padding: "1rem", marginY: "1.5rem" }}>
+            <Paper elevation={2} sx={{ padding: "1rem", marginBottom: "1.5rem", marginTop: "1rem" }}>
                 <SearchButton />
             </Paper>
             <Box sx={tableContainer}>
