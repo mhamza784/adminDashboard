@@ -5,6 +5,7 @@
   height: 300px;
   align-items: center;
 }
+
 .cardTitle {
   font-family: Helvetica;
   font-style: normal;
@@ -17,6 +18,7 @@
 
   color: #161722;
 }
+
 .cardKey {
   font-family: Helvetica;
   font-style: normal;
@@ -31,6 +33,7 @@
 
   color: #a8b0b9;
 }
+
 .cardValue {
   font-family: Helvetica;
   font-style: normal;
@@ -45,6 +48,7 @@
 
   color: #373f47;
 }
+
 .view {
   width: 106px !important;
   height: 35px !important;
@@ -54,6 +58,7 @@
   border-radius: 20px;
   cursor: pointer;
 }
+
 .title {
   font-family: Helvetica !important;
   font-style: normal;
@@ -62,6 +67,7 @@
   line-height: 136.02%;
   color: #161722;
 }
+
 .button {
   padding: 12px 12px 12px 20px !important;
   height: 40px;
@@ -76,23 +82,26 @@
   line-height: 100% !important;
   color: #161722 !important;
 }
+
 .select {
-  height: 40px;
-  padding-inline: 7px !important;
+  /* height: 40px; */
+  /* padding-inline: 7px !important; */
   align-content: center !important;
   align-items: center !important;
   display: flex !important;
   width: 150px;
-  background: #ffffff !important;
-  border: 1px solid #eaecee !important;
-  border-radius: 32px !important;
+
+  /* background: #ffffff !important; */
+  /* border: 1px solid #eaecee !important; */
+  /* border-radius: 32px !important; */
   font-family: Helvetica !important;
   text-transform: capitalize !important;
   font-style: normal;
-  font-weight: 500 !important;
-  font-size: 14px !important;
-  color: #161722 !important;
+  /* font-weight: 500 !important; */
+  /* font-size: 14px !important; */
+  /* color: #161722 !important; */
 }
+
 .ageBox {
   padding: 5px;
   background: #ffffff !important;
@@ -106,6 +115,7 @@
   line-height: 100% !important;
   color: #161722 !important;
 }
+
 .buttonAge {
   height: 30px;
   background: #ffffff !important;
@@ -123,6 +133,7 @@
   border: none !important;
   align-items: center;
 }
+
 .searchButton {
   background: #1eb0c4 !important;
   font-style: normal;
@@ -135,11 +146,34 @@
   padding: 10px 20px !important;
 }
 
+@media (max-width: 1023px) {
+  .background {
+    height: 400px;
+  }
+
+  .select {
+    width: 100px;
+  }
+}
+
 @media (max-width: 680px) {
   .background {
     height: 400px;
   }
 }
+
 .css-e363es-MuiFormControl-root {
   margin: 0 !important;
+}
+
+@media (max-width: 1400px) {
+  .select {
+    width: 180px;
+  }
+}
+
+@media (max-width: 1250px) {
+  .select {
+    width: 140px;
+  }
 }

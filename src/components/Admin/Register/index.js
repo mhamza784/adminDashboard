@@ -1,6 +1,7 @@
 import {
     Box,
     Divider,
+    Paper,
 } from "@mui/material";
 import React, { useState } from "react";
 import ListItem from "./ListItem";
@@ -17,7 +18,9 @@ const NewMessagesUI = ({ handleListItemClick }) => {
             <Box component="text" sx={mainHeading}>
                 Registered Members
             </Box>
-            <SearchButton />
+            <Paper elevation={2} sx={{ padding: "1rem", marginY: "1.5rem" }}>
+                <SearchButton />
+            </Paper>
             <Box sx={tableContainer}>
                 <Box component="text" sx={tableHeading}>
                     Members

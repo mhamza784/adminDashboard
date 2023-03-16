@@ -12,6 +12,7 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import React, { useState } from "react";
 import style from "./home.module.css";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+// import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import IconButton from "@mui/material/IconButton";
 import NativeSelect from "@mui/material/NativeSelect";
 import { arr } from "utils";
@@ -19,35 +20,37 @@ import { Country, State, City } from "country-state-city";
 import API from "@/redux/service/base.service";
 import { BASE_URL_API } from "@/redux/service/base.config";
 import { useSelector } from "react-redux";
+import { ArrowDropDownCircleOutlined } from "@mui/icons-material";
 
 const SearchButton = ({ setSearchData }) => {
   const { token } = useSelector((state) => state.users);
-  const [selectedCountry, setSelectedCountry] = useState(null);
-  const [selectedState, setSelectedState] = useState(null);
-  const [selectedCity, setSelectedCity] = useState(null);
+  const [selectedCountry, setSelectedCountry] = useState("any");
+  const [selectedState, setSelectedState] = useState("any");
+  const [selectedCity, setSelectedCity] = useState("any");
   const [startAge, setStartAge] = useState(19);
   const [endAge, setEndAge] = useState(35);
-  const [gender, setGender] = useState(null);
+  const [gender, setGender] = useState("");
 
   const handleSearch = () => {
-    const data = {
-      age: [Number(startAge), Number(endAge)],
-      gender,
-      country: selectedCountry?.name,
-      state: selectedState?.name,
-      city: selectedCity?.name,
-    };
-    console.log("data", data);
-    API.post(`${BASE_URL_API}/api/user/search`, data, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }).then((res) => {
-      setSearchData(res.data.data);
-    });
+    // const data = {
+    //   age: [Number(startAge), Number(endAge)],
+    //   gender,
+    //   country: selectedCountry?.name,
+    //   state: selectedState?.name,
+    //   city: selectedCity?.name,
+    // };
+    console.log("data");
+
+    // API.post(`${BASE_URL_API}/api/user/search`, data, {
+    //   headers: {
+    //     Authorization: `Bearer ${token}`,
+    //   },
+    // }).then((res) => {
+    //   setSearchData(res.data.data);
+    // });
   };
   return (
-    <Box sx={{ marginTop: "1.2rem", paddingX: "1.5rem" }}>
+    <Box>
       <Box
         sx={{
           display: "flex",
@@ -55,13 +58,18 @@ const SearchButton = ({ setSearchData }) => {
           justifyContent: { sm: "space-between", xs: "flex-start" },
           alignItems: "center",
           gap: { sm: "1rem", xs: ".5rem" },
-          marginBottom: "1rem",
         }}
       >
-        <FormControl sx={{}} size="small">
-          <InputLabel id="demo-select-small">Seeking</InputLabel>
+        <FormControl sx={{}} size="small" variant="standard">
+          <Box
+            id="demo-select-small"
+            sx={{ fontWeight: "600", fontFamily: "Helvetica" }}
+          >
+            Seeking
+          </Box>
           <Select
             className={style.select}
+            label="Seeking"
             value={gender}
             onChange={(e) => setGender(e.target.value)}
           >
@@ -69,38 +77,55 @@ const SearchButton = ({ setSearchData }) => {
             <MenuItem value="female">Female</MenuItem>
           </Select>
         </FormControl>
-        <Box
-          className={style.ageBox}
-          sx={{ display: "flex", justifyContent: "center" }}
-        >
-          <Box sx={{ padding: ".4rem" }}>Age</Box>
-          <NativeSelect
-            className={style.buttonAge}
-            value={startAge}
-            onChange={(e) => setStartAge(e.target.value)}
+        <FormControl size="small" variant="standard">
+          <Box
+            id="demo-select-small"
+            sx={{ fontWeight: "600", fontFamily: "Helvetica" }}
           >
-            {arr.map((item) => (
-              <option key={item} value={item}>
-                {item}
-              </option>
-            ))}
-          </NativeSelect>
+            Age
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Select
+              value={startAge}
+              sx={{ paddingTop: ".3rem" }}
+              IconComponent={ArrowDropDownIcon}
+              onChange={(e) => setStartAge(e.target.value)}
+            >
+              {arr.map((item) => (
+                <MenuItem key={item} value={item}>
+                  {item}
+                </MenuItem>
+              ))}
+            </Select>
 
-          <Box sx={{ padding: ".4rem", textTransform: "lowercase" }}>to</Box>
-          <NativeSelect
-            className={style.buttonAge}
-            value={endAge}
-            onChange={(e) => setEndAge(e.target.value)}
+            {/* <Box sx={{ padding: ".4rem", textTransform: "lowercase" }}>to</Box> */}
+            <Select
+              // className={style.buttonAge}
+              value={endAge}
+              sx={{ paddingTop: ".3rem" }}
+              onChange={(e) => setEndAge(e.target.value)}
+            >
+              {arr.map((item) => (
+                <MenuItem key={item} value={item}>
+                  {item}
+                </MenuItem>
+              ))}
+            </Select>
+          </Box>
+        </FormControl>
+        <FormControl sx={{}} variant="standard">
+          <Box
+            id="demo-select-small"
+            sx={{ fontWeight: "600", fontFamily: "Helvetica" }}
           >
-            {arr.map((item) => (
-              <option key={item} value={item}>
-                {item}
-              </option>
-            ))}
-          </NativeSelect>
-        </Box>
-        <FormControl sx={{}} size="small">
-          <InputLabel id="demo-select-small">Country</InputLabel>
+            Country
+          </Box>
           <Select
             value={selectedCountry}
             size="small"
@@ -115,8 +140,13 @@ const SearchButton = ({ setSearchData }) => {
             ))}
           </Select>
         </FormControl>
-        <FormControl sx={{}} size="small">
-          <InputLabel id="demo-select-small">State</InputLabel>
+        <FormControl sx={{}} variant="standard">
+          <Box
+            id="demo-select-small"
+            sx={{ fontWeight: "600", fontFamily: "Helvetica" }}
+          >
+            State
+          </Box>
           <Select
             value={selectedState}
             size="small"
@@ -131,8 +161,13 @@ const SearchButton = ({ setSearchData }) => {
             ))}
           </Select>
         </FormControl>
-        <FormControl sx={{}} size="small">
-          <InputLabel id="demo-select-small">City</InputLabel>
+        <FormControl sx={{}} variant="standard">
+          <Box
+            id="demo-select-small"
+            sx={{ fontWeight: "600", fontFamily: "Helvetica" }}
+          >
+            City
+          </Box>
           <Select
             value={selectedCity}
             size="small"
@@ -150,9 +185,31 @@ const SearchButton = ({ setSearchData }) => {
             ))}
           </Select>
         </FormControl>
-        <Button className={style.button} endIcon={<ArrowDropDownIcon />}>
-          Within
-        </Button>
+        <FormControl sx={{}} size="small" variant="standard">
+          <Box
+            id="demo-select-small"
+            sx={{ fontWeight: "600", fontFamily: "Helvetica" }}
+          >
+            within
+          </Box>
+          <Select
+            className={style.select}
+            label="within"
+          // value={gender}
+          // onChange={(e) => setGender(e.target.value)}
+          >
+            {selectedCity?.name && (
+              <>
+                <MenuItem value="">-</MenuItem>
+                <MenuItem value="10">10</MenuItem>
+                <MenuItem value="50">50</MenuItem>
+                <MenuItem value="100">100</MenuItem>
+                <MenuItem value="250">250</MenuItem>
+                <MenuItem value="500">500</MenuItem>
+              </>
+            )}
+          </Select>
+        </FormControl>
         <Button
           className={style.searchButton}
           sx={{
@@ -164,7 +221,19 @@ const SearchButton = ({ setSearchData }) => {
           Search
         </Button>
       </Box>
-      <Divider />
+      {/* <Divider /> */}
+      {/* <Box
+        sx={{
+          display: "flex",
+          justifyContent: "flex-end",
+          alignItems: "center",
+          marginY: "1rem",
+        }}
+      >
+        <Button className={style.button} endIcon={<ArrowDropDownIcon />}>
+          Sort by date
+        </Button>
+      </Box> */}
     </Box>
   );
 };
