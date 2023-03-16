@@ -46,8 +46,8 @@ function DrawerAppBar(props) {
             <Link href="/">
               <Box
                 component="img"
-                alt="logos"
-                src="/LOGOFOR.png"
+                alt="logo"
+                src="LOGOfor.png"
                 sx={{
                   display: "flex",
                   width: "7.5rem",
@@ -59,7 +59,7 @@ function DrawerAppBar(props) {
           <Box sx={{ display: "flex" }}>
             <Box sx={{ display: "flex" }}>
               <Avatar
-                alt="Remy Sharp"
+                alt="profile"
                 src="Larry.png"
                 sx={AvatarSize}
               />
