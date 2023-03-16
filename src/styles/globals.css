@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+@font-face {
+  font-family: "Helvetica";
+  src: url("../../public/Helvetica/Helvetica.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Helvetica";
+  src: url("../../public/Helvetica/Helvetica-Bold.ttf");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Helvetica";
+  src: url("../../public/Helvetica/helvetica-compressed-5871d14b6903a.otf");
+  font-weight: normal;
+  font-style: italic;
+}
+.css-1pemp91-MuiBadge-badge {
+  right: 5%;
+}
+.css-1m6559h-MuiInputBase-root-MuiInput-root::before {
+  border-bottom: 0;
+}
+.css-1m6559h-MuiInputBase-root-MuiInput-root {
+  border-bottom: 0;
+}
+.css-1dmqq7i-MuiNativeSelect-select-MuiInputBase-input-MuiInput-input {
+  border-bottom: 0;
+}
+
+.container {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.container::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+.paypal-button-row {
+  height: 40px;
+  width: 92px;
+}

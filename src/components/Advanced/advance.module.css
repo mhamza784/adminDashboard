@@ -1,0 +1,82 @@
+.title {
+  text-align: center;
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 44px;
+  /* identical to box height */
+  padding: 2rem 0;
+  letter-spacing: -0.01em;
+  text-transform: capitalize;
+
+  /* Black */
+
+  color: #161722;
+}
+.advance {
+  background: #fcf9f7;
+  width: 95%;
+  margin: auto;
+  margin-bottom: 2rem;
+}
+
+.mapTitle {
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: 500;
+  margin: 0rem 0 1rem;
+  font-size: 18px;
+  line-height: 100%;
+  color: #161722;
+}
+.mapdetail {
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  /* or 150% */
+  margin: 0rem 0 1rem;
+  color: rgba(22, 23, 34, 0.89);
+
+  opacity: 0.8;
+}
+.advancesection {
+  width: 95%;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  padding-bottom: 4rem;
+}
+.leftSection {
+  width: 50%;
+}
+.rightSection {
+  width: 50%;
+}
+@media (max-width: 998px) {
+  .advancesection {
+    display: block;
+  }
+  .leftSection {
+    width: 100%;
+  }
+  .rightSection {
+    width: 100%;
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .advancesection {
+    display: block;
+  }
+  .leftSection {
+    width: 100%;
+  }
+  .rightSection {
+    width: 100%;
+    margin-top: 2rem;
+  }
+}

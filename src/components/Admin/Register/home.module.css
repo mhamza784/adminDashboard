@@ -1,0 +1,145 @@
+.background {
+  background-image: url("/UserBackground.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 300px;
+  align-items: center;
+}
+.cardTitle {
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 150%;
+  /* identical to box height, or 30px */
+
+  text-align: center;
+
+  color: #161722;
+}
+.cardKey {
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  /* identical to box height, or 18px */
+
+  text-align: center;
+
+  /* Gray/400 */
+
+  color: #a8b0b9;
+}
+.cardValue {
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  /* identical to box height, or 21px */
+
+  text-align: center;
+
+  /* Gray/700 */
+
+  color: #373f47;
+}
+.view {
+  width: 106px !important;
+  height: 35px !important;
+  background: #ffffff !important;
+  border: 1px solid #1eb0c4;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.11);
+  border-radius: 20px;
+  cursor: pointer;
+}
+.title {
+  font-family: Helvetica !important;
+  font-style: normal;
+  font-size: 24px;
+  padding-bottom: 20px;
+  line-height: 136.02%;
+  color: #161722;
+}
+.button {
+  padding: 12px 12px 12px 20px !important;
+  height: 40px;
+  background: #ffffff !important;
+  border: 1px solid #eaecee !important;
+  border-radius: 32px !important;
+  font-family: Helvetica !important;
+  text-transform: capitalize !important;
+  font-style: normal;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  line-height: 100% !important;
+  color: #161722 !important;
+}
+.select {
+  height: 40px;
+  padding-inline: 7px !important;
+  align-content: center !important;
+  align-items: center !important;
+  display: flex !important;
+  width: 150px;
+  background: #ffffff !important;
+  border: 1px solid #eaecee !important;
+  border-radius: 32px !important;
+  font-family: Helvetica !important;
+  text-transform: capitalize !important;
+  font-style: normal;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  color: #161722 !important;
+}
+.ageBox {
+  padding: 5px;
+  background: #ffffff !important;
+  border: 1px solid #eaecee !important;
+  border-radius: 32px !important;
+  font-family: Helvetica !important;
+  text-transform: capitalize !important;
+  font-style: normal;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  line-height: 100% !important;
+  color: #161722 !important;
+}
+.buttonAge {
+  height: 30px;
+  background: #ffffff !important;
+  border-radius: 32px !important;
+  font-family: Helvetica !important;
+  text-transform: capitalize !important;
+  font-style: normal;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  line-height: 100% !important;
+  color: #161722 !important;
+  display: flex;
+  justify-content: space-between;
+  width: 2.5rem;
+  border: none !important;
+  align-items: center;
+}
+.searchButton {
+  background: #1eb0c4 !important;
+  font-style: normal;
+  border-radius: 6px !important;
+  /* font-weight: 600 !important; */
+  font-size: 16px !important;
+  line-height: 16px !important;
+  text-align: center;
+  color: #ffffff !important;
+  padding: 10px 20px !important;
+}
+
+@media (max-width: 680px) {
+  .background {
+    height: 400px;
+  }
+}
+.css-e363es-MuiFormControl-root {
+  margin: 0 !important;
+}

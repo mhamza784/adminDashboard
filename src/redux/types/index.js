@@ -1,0 +1,16 @@
+export const GET_USERS = "GET_USERS";
+export const GET_ALL_USERS = "GET_ALL_USERS";
+export const CREATE_USER = "CREATE_USER";
+export const USER_LOGIN = "USER_LOGIN";
+export const UPDATE_PASSWORD = "UPDATE_PASSWORD";
+export const FORGET_PASSWORD = "FORGET_PASSWORD";
+export const CONFIRM_PASSWORD = "CONFIRM_PASSWORD";
+export const UPDATE_USER = "UPDATE_USER";
+export const DEACTIVE_USER = "DEACTIVE_USER";
+export const LOGOUT = "LOGOUT";
+export const USER_SEARCH = "USER_SEARCH";
+export const SINGLE_USER = "SINGLE_USER";
+
+export const HOT_LIST_USER = "HOT_LIST_USER";
+export const ADD_HOT_LIST_USER = "ADD_HOT_LIST_USER";
+export const REMOVE_HOT_LIST_USER = "REMOVE_HOT_LIST_USER";
