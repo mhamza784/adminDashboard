@@ -29,7 +29,8 @@ export const TabsLink = {
     textTransform: "capitalize",
     fontWeight: "bold",
     fontFamily: "sans-serif",
-    padding: ".5rem"
+    padding: ".5rem",
+    color: "#19191D"
 };
 export const TabsBody = {
     width: "88%"

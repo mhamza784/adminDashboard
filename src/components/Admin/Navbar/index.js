@@ -33,7 +33,7 @@ function DrawerAppBar(props) {
       <AppBar
         component="nav"
         sx={{
-          background: router.pathname == "/" ? "#FAFAFA !important" : "#FAFAFA",
+          background: "#FAFAFA",
           px: "2%",
         }}
       >
@@ -43,14 +43,14 @@ function DrawerAppBar(props) {
             component="div"
             sx={typography}
           >
-            <Link href={token ? "/home" : "/"}>
+            <Link href="/">
               <Box
                 component="img"
                 alt="logos"
-                src={router.pathname == "/" ? "/LOGOFOR.png" : "/LOGOFOR.png"}
+                src="/LOGOFOR.png"
                 sx={{
                   display: "flex",
-                  width: router.pathname == "/" ? "8rem" : "8rem",
+                  width: "7.5rem",
                 }}
               />
             </Link>
@@ -92,7 +92,7 @@ function DrawerAppBar(props) {
       <Box component="main">
         <Toolbar />
       </Box>
-    </Box>
+    </Box >
   );
 }
 
