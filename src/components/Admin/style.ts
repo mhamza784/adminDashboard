@@ -36,7 +36,7 @@ export const TabsBody = {
     width: "88%"
 };
 export const BoxMargin = {
-    mt: "1.4rem"
+    mt: "1.1rem"
 };
 export const iconColor = {
     color: "#A60363"

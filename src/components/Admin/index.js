@@ -6,5 +6,4 @@ const index = () => {
         <Tabs />
     )
 }
-
 export default index

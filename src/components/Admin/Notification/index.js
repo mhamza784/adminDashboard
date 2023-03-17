@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import React from "react";
-import RadioButton from "./radioButton";
+import CkeckBox from "./checkBox";
 import Table from "./tableData";
 import { Grid, Paper } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -23,14 +23,10 @@ const NewMessagesUI = () => {
                 Notification
             </Box>
             <Box sx={gridContainer}>
-                <Grid container spacing={4} >
-                    <Grid item xs={6} >
-                        <Item><RadioButton /></Item>
+                <Grid container >
+                    <Grid item xs={8} >
+                        <Item><CkeckBox /></Item>
                         <Item sx={gridMessage}><Message /></Item>
-
-                    </Grid>
-                    <Grid item xs={6} >
-                        <Item sx={tablePadding}><Table /></Item>
                     </Grid>
                 </Grid>
             </Box>

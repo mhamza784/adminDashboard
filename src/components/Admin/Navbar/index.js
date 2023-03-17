@@ -62,12 +62,14 @@ function DrawerAppBar(props) {
                 alt="profile"
                 src="Larry.png"
                 sx={AvatarSize}
+                onClick={handleClick}
               />
-              <IconButton color="black" edge="end">
+              {/* <IconButton color="black" edge="end">
                 <ExpandMoreIcon onClick={handleClick} />
-              </IconButton>
+              </IconButton> */}
             </Box>
             <Menu
+              sx={{ marginTop: "2rem" }}
               id="demo-positioned-menu"
               aria-labelledby="demo-positioned-button"
               anchorEl={anchorEl}
@@ -75,7 +77,7 @@ function DrawerAppBar(props) {
               onClose={() => setAnchorEl(null)}
               anchorOrigin={{
                 vertical: "top",
-                horizontal: "left",
+                horizontal: "right",
               }}
               transformOrigin={{
                 vertical: "top",

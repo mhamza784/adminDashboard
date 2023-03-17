@@ -31,8 +31,8 @@ const ListItem = ({
       <Box sx={profileData}>Male</Box>
       <Box sx={profileData}>richard@gmail.com</Box>
       <Box sx={iconContainer}>
-        <DeleteForeverOutlinedIcon sx={iconColor} />
-        <RemoveFromQueueOutlinedIcon sx={iconColor} />
+        <Box component="img" src="deleteicon.png" width="15px" height="15px" sx={iconColor} />
+        <Box component="img" src="removeicon.png" sx={{ marginTop: ".6rem", marginRight: "1rem" }} />
       </Box>
     </Box>
   );

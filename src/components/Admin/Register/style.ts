@@ -20,9 +20,11 @@ export const tableHeading = {
     fontWeight: "600",
     fontSize: "1.2rem",
     fontStyle: "normal",
+    paddingLeft: ".5rem",
+    marginTop: ".7rem"
 };
 export const tableDivider = {
-    marginTop: ".5rem"
+    marginTop: ".7rem"
 };
 export const tablePagination = {
     display: "flex",
@@ -66,8 +68,25 @@ export const iconContainer = {
 
 }
 export const iconColor = {
-    color: "#F71E1E",
-    mr: ".5rem",
-    fontSize: "1.1rem",
+    alignSelf: "center",
+    marginRight: ".5rem"
 }
 
+// Search Button
+
+export const searchContainer = {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: { sm: "space-between", xs: "flex-start" },
+    alignItems: "center",
+    gap: { sm: "1rem", xs: ".5rem" },
+}
+export const menuLabel = {
+    fontWeight: "600",
+    fontFamily: "Helvetica"
+}
+export const ageMenu = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+}

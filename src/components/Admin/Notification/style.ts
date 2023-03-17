@@ -42,7 +42,7 @@ export const buttonContainer = {
     justifyContent: "end"
 };
 export const buttonStyle = {
-    width: "16%",
+    width: "12%",
     justifySelf: "flex-end"
 };
 
