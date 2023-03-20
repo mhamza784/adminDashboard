@@ -13,6 +13,7 @@ import Link from "next/link";
 import { Menu, MenuItem } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { mainContainer, typography, AvatarSize } from "./style";
+import { LOGOUT } from "@/redux/types";
 
 function DrawerAppBar(props) {
   const { user, token } = useSelector((state) => state.users);
@@ -26,7 +27,9 @@ function DrawerAppBar(props) {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
+  const handleLogout = () => {
+    dispatch({ type: LOGOUT, payload: { onlineNow: false, id: user?._id } });
+  };
   return (
     <Box sx={mainContainer}>
       <CssBaseline />
@@ -85,7 +88,7 @@ function DrawerAppBar(props) {
               }}
             >
               <MenuItem >Profile</MenuItem>
-              <MenuItem >Logout</MenuItem>
+              <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
           </Box>
 

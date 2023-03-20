@@ -1,5 +1,5 @@
 export const BASE_URL_API =
-  process.env.NEXT_PUBLIC_BASE_API_URL || "http://70.35.201.48:5001";
+  process.env.NEXT_PUBLIC_BASE_API_URL || "https://api.mylatinlove.com";
 
 console.log("BASE API ====", `${BASE_URL_API}`);
 

@@ -1,3 +1,4 @@
+// import login from "@/pages/login";
 import API from "./base.service";
 
 export const getAllUsersAPI = async () => {
@@ -21,6 +22,7 @@ export const updateUserPasswordAPI = async (user) => {
   return API.put(`/user/password/${user.id}`, user);
 };
 export const confirmUserPasswordAPI = async (user) => {
+  console.log(user, "service");
   return API.put(`/user/link`, user);
 };
 // export const deleteUserByIdAPI = async (id) => axios.delete(`/user/${id}`);

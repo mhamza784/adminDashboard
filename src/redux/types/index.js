@@ -12,5 +12,14 @@ export const USER_SEARCH = "USER_SEARCH";
 export const SINGLE_USER = "SINGLE_USER";
 
 export const HOT_LIST_USER = "HOT_LIST_USER";
+export const HOT_LIST_BY_YOU_USER = "HOT_LIST_BY_YOU_USER";
 export const ADD_HOT_LIST_USER = "ADD_HOT_LIST_USER";
 export const REMOVE_HOT_LIST_USER = "REMOVE_HOT_LIST_USER";
+
+export const BLOCKED_USER = "BLOCKED_USER";
+export const ADD_BLOCK_USER = "ADD_BLOCK_USER";
+export const REMOVE_BLOCK_USER = "REMOVE_BLOCK_USER";
+
+export const CHAT_USER = "CHAT_USER";
+export const ADD_CHAT_USER = "ADD_CHAT_USER";
+export const REMOVE_CHAT_USER = "REMOVE_CHAT_USER";

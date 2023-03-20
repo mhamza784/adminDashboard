@@ -9,6 +9,9 @@ const users = createSlice({
     singleUser: {},
   },
   reducers: {
+    searchData: (state, action) => {
+      return { ...state, allUser: action.payload };
+    },
     getUsersSlice: (state, action) => {
       return { ...state, allUser: action.payload };
     },
@@ -27,7 +30,6 @@ const users = createSlice({
     confirmPasswordUserSlice: (state, action) => {
       return {
         ...state,
-        user: action.payload.user,
       };
     },
     UpdateUserSlice: (state, action) => {
@@ -82,6 +84,7 @@ export const {
   confirmPasswordUserSlice,
   logoutUserSlice,
   singleUserSlice,
+  searchData,
   // searchUsersSlice,
 } = users.actions;
 export default users.reducer;

@@ -10,6 +10,9 @@ const hotList = createSlice({
     getAllHotSlice: (state, action) => {
       return { ...state, hotListYou: action.payload };
     },
+    getAllHotByYouSlice: (state, action) => {
+      return { ...state, hotListByYou: action.payload };
+    },
 
     // editUserSlice: (state, action) => {
     //   state = state.map((i) =>
@@ -23,5 +26,6 @@ const hotList = createSlice({
     },
   },
 });
-export const { getAllHotSlice, deleteHotListSlice } = hotList.actions;
+export const { getAllHotSlice, deleteHotListSlice, getAllHotByYouSlice } =
+  hotList.actions;
 export default hotList.reducer;

@@ -1,8 +1,9 @@
-import React from 'react';
+import AlertNotification from "@/components/Alert";
+import NewLogin from "@/components/Login/NewLogin";
 import Head from "next/head";
-import Login from "./login"
+import React from "react";
 
-export default function Home() {
+const login = () => {
   return (
     <>
       <Head>
@@ -11,7 +12,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favorite.png" />
       </Head>
-      <Login />
+      {/* <AlertNotification /> */}
+      <NewLogin />
     </>
   );
-}
+};
+
+export default login;

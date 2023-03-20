@@ -20,8 +20,9 @@ import { arr, WithinValue } from "utils";
 import { Country, State, City } from "country-state-city";
 import API from "@/redux/service/base.service";
 import { BASE_URL_API } from "@/redux/service/base.config";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ArrowDropDownCircleOutlined } from "@mui/icons-material";
+import { searchData } from "@/redux/slices/users";
 
 const SearchButton = ({ setSearchData }) => {
   const { token } = useSelector((state) => state.users);
@@ -32,24 +33,32 @@ const SearchButton = ({ setSearchData }) => {
   const [endAge, setEndAge] = useState(35);
   const [gender, setGender] = useState("");
   const [within, setWithin] = useState("");
+  const dispatch = useDispatch();
 
-  const handleSearch = () => {
-    // const data = {
-    //   age: [Number(startAge), Number(endAge)],
-    //   gender,
-    //   country: selectedCountry?.name,
-    //   state: selectedState?.name,
-    //   city: selectedCity?.name,
-    // };
+  const handleSearch = async () => {
+    const data = {
+      age: [Number(startAge), Number(endAge)],
+      gender,
+      country: selectedCountry?.name,
+      state: selectedState?.name,
+      city: selectedCity?.name,
+    };
     console.log("data");
 
-    // API.post(`${BASE_URL_API}/api/user/search`, data, {
-    //   headers: {
-    //     Authorization: `Bearer ${token}`,
-    //   },
-    // }).then((res) => {
-    //   setSearchData(res.data.data);
-    // });
+    try {
+      const res = await API.post(`${BASE_URL_API}/api/user/search`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log("res", res.data);
+      // setSearchData(res.data.data);
+      dispatch(searchData(res.data.data))
+
+    } catch (err) {
+      console.log("err", err);
+
+    }
   };
   return (
     <Box
@@ -94,10 +103,7 @@ const SearchButton = ({ setSearchData }) => {
               </MenuItem>
             ))}
           </Select>
-
-          {/* <Box sx={{ padding: ".4rem", textTransform: "lowercase" }}>to</Box> */}
           <Select
-            // className={style.buttonAge}
             value={endAge}
             sx={{ paddingTop: ".3rem" }}
             onChange={(e) => setEndAge(e.target.value)}
@@ -197,16 +203,6 @@ const SearchButton = ({ setSearchData }) => {
               </MenuItem>
             ))
           )}
-          {/* {selectedCity?.name && (
-            <> */}
-          {/* <MenuItem value="">-</MenuItem>
-          <MenuItem value="10">10</MenuItem>
-          <MenuItem value="50">50</MenuItem>
-          <MenuItem value="100">100</MenuItem>
-          <MenuItem value="250">250</MenuItem>
-          <MenuItem value="500">500</MenuItem> */}
-          {/* </>
-          )} */}
         </Select>
       </FormControl>
       <Button

@@ -16,6 +16,11 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
 import { tableHeading, ProfileContainer, AvatarSize, profileData, iconContainer, iconColor, tableDivider } from "./style";
+import { useCallback, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { GET_ALL_USERS } from "@/redux/types";
+import { BASE_URL_API } from "@/redux/service/base.config";
+
 
 function TablePaginationActions(props) {
     const theme = useTheme();
@@ -98,7 +103,7 @@ const rows = [
     createData('Orela', "Feb 15, 2022", "Male", "richard@gmail.com", 437, 18.0),
 ].sort((a, b) => (a.calories < b.calories ? -1 : 1));
 
-export default function CustomPaginationActionsTable() {
+export default function CustomPaginationActionsTable({ item }) {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -115,13 +120,27 @@ export default function CustomPaginationActionsTable() {
         setPage(0);
     };
 
+
+    const { allUser, user } = useSelector((state) => state.users);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch({
+            type: GET_ALL_USERS,
+        });
+    }, [dispatch]);
+    console.log(allUser, "all users");
+    const [selectItem, setSelectedItem] = useState([]);
+
+
+
+
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 400 }} aria-label="custom pagination table">
                 <TableBody >
                     {(rowsPerPage > 0
-                        ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                        : rows
+                        ? allUser.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                        : allUser
                     ).map((row) => (
                         <TableRow key={row.name} >
                             <TableCell component="th" scope="row" align="center" sx={{ paddingLeft: "3rem" }}>
@@ -129,8 +148,11 @@ export default function CustomPaginationActionsTable() {
                                     <Avatar
                                         sx={AvatarSize}
                                         alt="logo"
-                                        onClick={(e) => handleListItemClick(e, item)}
-                                        src="/imagecricle.png"
+                                        src={
+                                            row?.myPictures?.length
+                                                ? `${BASE_URL_API}${item?.myPictures[0]}`
+                                                : "photo.png"
+                                        }
                                     />
                                     <Box sx={profileData} >
                                         {row.name}
@@ -139,12 +161,12 @@ export default function CustomPaginationActionsTable() {
                             </TableCell>
                             <TableCell align="center">
                                 <Box sx={profileData}>
-                                    {row.calories}
+                                    {row.createdAt}
                                 </Box>
 
                             </TableCell>
                             <TableCell align="center">
-                                <Box sx={profileData}>{row.fat}</Box>
+                                <Box sx={profileData}>{row.gender}</Box>
                             </TableCell>
                             <TableCell align="center">
                                 <Box sx={profileData}>{row.email}</Box>

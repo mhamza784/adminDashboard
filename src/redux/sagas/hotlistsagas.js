@@ -4,10 +4,16 @@ import {
   userHotListApi,
   getUserHotListById,
   removeHotListById,
+  getAllHotList,
 } from "../service/hotList.service";
-import { createHotListSlice, getAllHotSlice } from "../slices/hotlist";
+import {
+  createHotListSlice,
+  getAllHotByYouSlice,
+  getAllHotSlice,
+} from "../slices/hotlist";
 import {
   ADD_HOT_LIST_USER,
+  HOT_LIST_BY_YOU_USER,
   HOT_LIST_USER,
   REMOVE_HOT_LIST_USER,
 } from "../types";
@@ -22,6 +28,11 @@ import {
 export function* getUserByIdSaga(action) {
   const { data } = yield getUserHotListById(action.payload);
   yield put(getAllHotSlice(data?.data));
+}
+
+export function* getHotListByYouSaga(action) {
+  const { data } = yield getAllHotList(action.payload);
+  yield put(getAllHotByYouSlice(data?.data));
 }
 
 export function* createHotListSaga(action) {
@@ -70,6 +81,7 @@ export function* deleteUserByIdSaga(action) {
 
 export function* watchHotListAsync() {
   yield takeEvery(HOT_LIST_USER, getUserByIdSaga);
+  yield takeEvery(HOT_LIST_BY_YOU_USER, getHotListByYouSaga);
   yield takeEvery(ADD_HOT_LIST_USER, createHotListSaga);
   yield takeEvery(REMOVE_HOT_LIST_USER, deleteUserByIdSaga);
 }

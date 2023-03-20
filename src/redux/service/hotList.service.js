@@ -1,7 +1,8 @@
 import API from "./base.service";
 
-export const getAllHotList = async () => {
-  return API.get(`/hotlist/`);
+export const getAllHotList = async (action) => {
+  console.log("action", action);
+  return API.get(`/hotlist/${action.id}`);
 };
 
 export const userHotListApi = async (payload) =>

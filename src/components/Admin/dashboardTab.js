@@ -82,6 +82,13 @@ export default function VerticalTabs() {
                 aria-label="Vertical tabs example"
                 className={classes.tabs}
                 sx={TabsBox}
+                TabIndicatorProps={{
+                    sx: {
+                        backgroundColor: 'red',
+                        background: "blue",
+                        color: "red"
+                    },
+                }}
             >
                 <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Registered" iconPosition="start" label="Registered User" sx={TabsLink} {...a11yProps(0)} />
                 <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Notification" iconPosition="start" label="Notification" sx={TabsLink} {...a11yProps(1)} />
@@ -95,7 +102,6 @@ export default function VerticalTabs() {
                     <Box sx={BoxMargin}>
                         <RegisteredList />
                     </Box>
-
                 </TabPanel>
                 <TabPanel value={value} index={1}>
                     <Box>

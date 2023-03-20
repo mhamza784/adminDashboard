@@ -101,7 +101,7 @@ export function* UserLoginSaga(action) {
   const users = yield userLoginAPI(action.payload);
   if (users?.data?.status == 200) {
     yield put(loginUserSlice(users?.data?.data));
-    Router.push("/home");
+    Router.push("/admin");
     yield put(
       createAlert({
         type: "success",
@@ -142,9 +142,8 @@ export function* updateUserPasswordSaga(action) {
   }
 }
 export function* confirmUserPasswordSaga(action) {
-
+  console.log(action);
   const users = yield confirmUserPasswordAPI(action.payload);
-  console.log(users);
   if (users?.data?.status == 200) {
     yield put(confirmPasswordUserSlice(users?.data?.data));
     yield put(
@@ -213,9 +212,10 @@ export function* updateDeactiveUserSaga(action) {
     Router.push("/");
   }
 }
-export function* logoutUserSaga() {
+export function* logoutUserSaga(action) {
+  yield updateUserAPI(action.payload);
   yield put(logoutUserSlice());
-  Router.push("/");
+  Router.push("/login");
   yield put(
     createAlert({
       type: "success",
