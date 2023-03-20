@@ -16,7 +16,7 @@ import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 // import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import IconButton from "@mui/material/IconButton";
 import NativeSelect from "@mui/material/NativeSelect";
-import { arr } from "utils";
+import { arr, WithinValue } from "utils";
 import { Country, State, City } from "country-state-city";
 import API from "@/redux/service/base.service";
 import { BASE_URL_API } from "@/redux/service/base.config";
@@ -31,6 +31,7 @@ const SearchButton = ({ setSearchData }) => {
   const [startAge, setStartAge] = useState(19);
   const [endAge, setEndAge] = useState(35);
   const [gender, setGender] = useState("");
+  const [within, setWithin] = useState("");
 
   const handleSearch = () => {
     // const data = {
@@ -182,22 +183,30 @@ const SearchButton = ({ setSearchData }) => {
         >
           within
         </Box>
+
         <Select
           className={style.select}
           label="within"
-        // value={gender}
-        // onChange={(e) => setGender(e.target.value)}
+          value={within}
+          onChange={(e) => setWithin(e.target.value)}
         >
           {selectedCity?.name && (
-            <>
-              <MenuItem value="">-</MenuItem>
-              <MenuItem value="10">10</MenuItem>
-              <MenuItem value="50">50</MenuItem>
-              <MenuItem value="100">100</MenuItem>
-              <MenuItem value="250">250</MenuItem>
-              <MenuItem value="500">500</MenuItem>
-            </>
+            WithinValue.map((item) => (
+              <MenuItem key={item} value={item}>
+                {item}
+              </MenuItem>
+            ))
           )}
+          {/* {selectedCity?.name && (
+            <> */}
+          {/* <MenuItem value="">-</MenuItem>
+          <MenuItem value="10">10</MenuItem>
+          <MenuItem value="50">50</MenuItem>
+          <MenuItem value="100">100</MenuItem>
+          <MenuItem value="250">250</MenuItem>
+          <MenuItem value="500">500</MenuItem> */}
+          {/* </>
+          )} */}
         </Select>
       </FormControl>
       <Button

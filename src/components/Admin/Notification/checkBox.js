@@ -15,6 +15,7 @@ import List from "./tableData"
 
 export default function RowRadioButtonsGroup() {
     const [checked, setChecked] = React.useState([true, false]);
+    const [selectedChecked, setSelectedChecked] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const openList = (event) => {
         setAnchorEl(event.currentTarget);
@@ -36,6 +37,9 @@ export default function RowRadioButtonsGroup() {
 
     const handleChange3 = (event) => {
         setChecked([checked[0], event.target.checked]);
+    };
+    const handleChange4 = (event) => {
+        setSelectedChecked(event.target.checked);
     };
 
     const children = (
@@ -75,6 +79,10 @@ export default function RowRadioButtonsGroup() {
                             }
                         />
                         {children}
+                        <FormControlLabel
+                            label="Select Members"
+                            control={<Checkbox checked={selectedChecked} onChange={handleChange4} onClick={openList} />}
+                        />
                     </RadioGroup>
                     <Popover
                         id={id}

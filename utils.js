@@ -405,6 +405,14 @@ export const PRIVATE_ROUTES = [
   "/hotlist",
   "/messages",
 ];
+export const WithinValue = [
+  "-",
+  "10",
+  "50",
+  "100",
+  "250",
+  "500",
+];
 
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
