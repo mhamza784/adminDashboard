@@ -90,9 +90,9 @@ export default function VerticalTabs() {
                     },
                 }}
             >
-                <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Registered" iconPosition="start" label="Registered User" sx={TabsLink} {...a11yProps(0)} />
+                <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Members User" iconPosition="start" label="Registered User" sx={TabsLink} {...a11yProps(0)} />
                 <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Notification" iconPosition="start" label="Notification" sx={TabsLink} {...a11yProps(1)} />
-                <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Email" iconPosition="start" label="Email Users" sx={TabsLink} {...a11yProps(2)} />
+                {/* <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Email" iconPosition="start" label="Email Users" sx={TabsLink} {...a11yProps(2)} /> */}
             </Tabs>
             <Box sx={TabsBody}>
                 <TabPanel value={value} index={0} >

@@ -8,6 +8,7 @@ import {
   getAllUsersAPI,
   forgetPasswordUserAPI,
   confirmUserPasswordAPI,
+  deleteUserByIdAPI,
   // userSearchAPI
   getUserByIdAPI,
 } from "../service/user.service";
@@ -20,6 +21,7 @@ import {
   singleUserSlice,
   forgetPasswordUserSlice,
   confirmPasswordUserSlice,
+  deleteUserSlice,
   // searchUsersSlice
 } from "../slices/users";
 import {
@@ -34,6 +36,7 @@ import {
   SINGLE_USER,
   FORGET_PASSWORD,
   CONFIRM_PASSWORD,
+  DELETE_USER_BY_ID
   // USER_SEARCH
 } from "../types";
 import Router from "next/router";
@@ -226,10 +229,10 @@ export function* logoutUserSaga(action) {
 }
 
 //Todo  user delete
-// export function* deleteUserByIdSaga(action) {
-//   yield deleteUserByIdAPI(action.id);
-//   yield put(deleteUserSlice(action.id));
-// }
+export function* deleteUserByIdSaga(action) {
+  yield deleteUserByIdAPI(action.payload);
+  yield put(deleteUserSlice(action.payload));
+}
 
 export function* watchUsersAsync() {
   yield takeEvery(GET_ALL_USERS, getUsersSaga);
@@ -242,5 +245,5 @@ export function* watchUsersAsync() {
   yield takeEvery(FORGET_PASSWORD, forgetUserPasswordSaga);
   yield takeEvery(LOGOUT, logoutUserSaga);
   yield takeEvery(SINGLE_USER, getUserByIdSaga);
-  //   yield takeEvery(DELETE_USER_BY_ID, deleteUserByIdSaga);
+  yield takeEvery(DELETE_USER_BY_ID, deleteUserByIdSaga);
 }

@@ -58,6 +58,17 @@ export const profileData = {
     fontWeight: "bold",
     fontFamily: "sans-serif",
     color: " #425466",
+    textTransform: "capitalize"
+}
+export const profileEmail = {
+    px: "1rem",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    fontSize: ".84rem",
+    fontWeight: "bold",
+    fontFamily: "sans-serif",
+    color: " #425466",
 }
 export const iconContainer = {
     display: { md: "flex", xs: "none", },
@@ -83,7 +94,7 @@ export const searchContainer = {
 }
 export const menuLabel = {
     fontWeight: "600",
-    fontFamily: "Helvetica"
+    fontFamily: "Helvetica",
 }
 export const ageMenu = {
     display: "flex",

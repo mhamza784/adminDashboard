@@ -7,6 +7,7 @@ export const FORGET_PASSWORD = "FORGET_PASSWORD";
 export const CONFIRM_PASSWORD = "CONFIRM_PASSWORD";
 export const UPDATE_USER = "UPDATE_USER";
 export const DEACTIVE_USER = "DEACTIVE_USER";
+export const DELETE_USER_BY_ID = "DELETE_USER_BY_ID";
 export const LOGOUT = "LOGOUT";
 export const USER_SEARCH = "USER_SEARCH";
 export const SINGLE_USER = "SINGLE_USER";

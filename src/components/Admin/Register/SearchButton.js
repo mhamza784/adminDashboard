@@ -43,7 +43,7 @@ const SearchButton = ({ setSearchData }) => {
       state: selectedState?.name,
       city: selectedCity?.name,
     };
-    console.log("data");
+    // console.log("data");
 
     try {
       const res = await API.post(`${BASE_URL_API}/api/user/search`, data, {
@@ -180,29 +180,6 @@ const SearchButton = ({ setSearchData }) => {
               {item?.name}
             </MenuItem>
           ))}
-        </Select>
-      </FormControl>
-      <FormControl size="small" variant="standard">
-        <Box
-          id="demo-select-small"
-          sx={menuLabel}
-        >
-          within
-        </Box>
-
-        <Select
-          className={style.select}
-          label="within"
-          value={within}
-          onChange={(e) => setWithin(e.target.value)}
-        >
-          {selectedCity?.name && (
-            WithinValue.map((item) => (
-              <MenuItem key={item} value={item}>
-                {item}
-              </MenuItem>
-            ))
-          )}
         </Select>
       </FormControl>
       <Button

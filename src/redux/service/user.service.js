@@ -1,4 +1,5 @@
 // import login from "@/pages/login";
+import { ResetTvOutlined } from "@mui/icons-material";
 import API from "./base.service";
 
 export const getAllUsersAPI = async () => {
@@ -25,4 +26,8 @@ export const confirmUserPasswordAPI = async (user) => {
   console.log(user, "service");
   return API.put(`/user/link`, user);
 };
-// export const deleteUserByIdAPI = async (id) => axios.delete(`/user/${id}`);
+export const deleteUserByIdAPI = async ({ id }) => {
+  console.log(id);
+  return API.delete(`/user/${id}`);
+}
+

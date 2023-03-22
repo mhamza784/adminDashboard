@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from '@mui/material/styles';
-import { Box, Avatar, Divider } from '@mui/material';
+import { Box, Avatar, Divider, } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -15,12 +15,20 @@ import FirstPageIcon from '@mui/icons-material/FirstPage';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
-import { tableHeading, ProfileContainer, AvatarSize, profileData, iconContainer, iconColor, tableDivider } from "./style";
+import { tableHeading, ProfileContainer, AvatarSize, profileData, profileEmail, iconContainer, iconColor, tableDivider } from "./style";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GET_ALL_USERS } from "@/redux/types";
 import { BASE_URL_API } from "@/redux/service/base.config";
-
+import { DELETE_USER_BY_ID } from "@/redux/types";
+import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import { searchData } from "@/redux/slices/users";
 
 function TablePaginationActions(props) {
     const theme = useTheme();
@@ -104,12 +112,37 @@ const rows = [
 ].sort((a, b) => (a.calories < b.calories ? -1 : 1));
 
 export default function CustomPaginationActionsTable({ item }) {
+    const { allUser, user } = useSelector((state) => state.users);
+    const [selectData, setSelectData] = useState(allUser);
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
+    const [deleteID, setDeleteID] = React.useState();
+    const [open, setOpen] = React.useState(false);
+    const dispatch = useDispatch();
+    const deleteUser = (id) => {
+        setDeleteID(id)
+        setOpen(true);
+
+        // dispatch({ type: DELETE_USER_BY_ID, payload: { id: id } });
+
+
+        console.log(id);
+    }
+    const handleDelete = () => {
+        dispatch({ type: DELETE_USER_BY_ID, payload: { id: deleteID } });
+
+        dispatch(searchData(allUser.filter((item) => item._id !== deleteID)));
+        setOpen(false);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
 
     // Avoid a layout jump when reaching the last page with empty rows.
     const emptyRows =
-        page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+        page > 0 ? Math.max(0, (1 + page) * rowsPerPage - Object.keys(allUser).length) : 0;
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -121,21 +154,43 @@ export default function CustomPaginationActionsTable({ item }) {
     };
 
 
-    const { allUser, user } = useSelector((state) => state.users);
-    const dispatch = useDispatch();
+
     useEffect(() => {
         dispatch({
             type: GET_ALL_USERS,
         });
-    }, [dispatch]);
-    console.log(allUser, "all users");
-    const [selectItem, setSelectedItem] = useState([]);
+    }, []);
 
 
 
 
     return (
         <TableContainer component={Paper}>
+            <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <Box sx={{ display: "flex", flexDirection: "column", textAlign: "center", justifyItems: "center", alignItems: "center", padding: "1.3rem" }}>
+                    <ErrorOutlineOutlinedIcon sx={{ color: "#F8BB86", fontSize: "5rem" }} />
+                    <DialogTitle id="alert-dialog-title">
+
+                        {"Are you sure?"}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            You are really want to delete this user
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleClose} sx={{ ":hover": { bgcolor: "#A6A6A6", color: "white" }, backgroundColor: "#C1C1C1", fontWeight: "600", color: "white", fontSize: "1rem" }}>Cancel</Button>
+                        <Button onClick={handleDelete} type="danger" sx={{ ":hover": { bgcolor: "#BF513D", color: "white" }, backgroundColor: "rgb(221, 107, 85)", fontWeight: "600", color: "white", fontSize: "1rem" }} autoFocus>
+                            Yes, Delete it!
+                        </Button>
+                    </DialogActions>
+                </Box>
+            </Dialog>
             <Table sx={{ minWidth: 400 }} aria-label="custom pagination table">
                 <TableBody >
                     {(rowsPerPage > 0
@@ -150,7 +205,7 @@ export default function CustomPaginationActionsTable({ item }) {
                                         alt="logo"
                                         src={
                                             row?.myPictures?.length
-                                                ? `${BASE_URL_API}${item?.myPictures[0]}`
+                                                ? `${BASE_URL_API}${row?.myPictures[0]}`
                                                 : "photo.png"
                                         }
                                     />
@@ -169,13 +224,14 @@ export default function CustomPaginationActionsTable({ item }) {
                                 <Box sx={profileData}>{row.gender}</Box>
                             </TableCell>
                             <TableCell align="center">
-                                <Box sx={profileData}>{row.email}</Box>
+                                <Box sx={profileEmail}>{row.email}</Box>
                             </TableCell>
                             <TableCell align="right">
                                 <Box sx={iconContainer}>
-                                    <Box component="img" src="deleteicon.png" width="15px" height="15px" sx={iconColor} />
+                                    <Box onClick={() => deleteUser(row._id)} component="img" src="deleteicon.png" width="15px" height="15px" sx={iconColor} />
                                     <Box component="img" src="removeicon.png" sx={{ marginTop: ".6rem", }} />
                                 </Box>
+
                             </TableCell>
                         </TableRow>
                     ))}
@@ -191,7 +247,7 @@ export default function CustomPaginationActionsTable({ item }) {
                         <TablePagination
                             rowsPerPageOptions={[3, 5, 10, 25, { label: 'All', value: -1 }]}
                             colSpan={3}
-                            count={rows.length}
+                            count={Object.keys(allUser).length}
                             rowsPerPage={rowsPerPage}
                             page={page}
                             SelectProps={{

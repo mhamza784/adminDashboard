@@ -17,7 +17,7 @@ export default function CustomSeparator({ value }) {
             Admin Panel
         </Link>,
         <Typography key="3" fontWeight="bold" color="#1EB0C4">
-            {value} User
+            {value}
         </Typography>,
     ];
 

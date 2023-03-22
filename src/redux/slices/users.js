@@ -69,10 +69,12 @@ const users = createSlice({
     //   );
     //   return state;
     // },
-    // deleteUserSlice: (state, action) => {
-    //   state = state.filter((i) => i.id !== action.payload);
-    //   return state;
-    // },
+    deleteUserSlice: (state, action) => {
+      console.log(action.payload, "hecked id");
+      state = state.filter((i) => i._id !== action.payload);
+
+      return state;
+    },
   },
 });
 export const {
@@ -85,6 +87,7 @@ export const {
   logoutUserSlice,
   singleUserSlice,
   searchData,
+  deleteUserSlice,
   // searchUsersSlice,
 } = users.actions;
 export default users.reducer;
