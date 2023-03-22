@@ -156,7 +156,7 @@ export default function RowRadioButtonsGroup() {
                         />
                         {children}
                         <FormControlLabel
-                            label="Select Members"
+                            label="Select User"
                             control={<Checkbox checked={selectedChecked} onChange={handleChange4} onClick={openList} />}
                         />
                     </RadioGroup>

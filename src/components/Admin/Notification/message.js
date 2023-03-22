@@ -15,15 +15,31 @@ const message = () => {
             <Stack spacing={2}>
                 <Divider sx={dividerStyle} />
                 <TextField
+                    sx={{
+                        "& .MuiOutlinedInput-root:hover": {
+                            "& > fieldset": {
+                                borderColor: "#1976d2"
+                            },
+                        }
+                    }}
+                    variant="outlined"
                     label="Title"
                     id="outlined-size-small"
                     size="small"
+
                 />
                 <TextField
                     id="outlined-multiline-static"
                     label="Message"
                     multiline
                     rows={6}
+                    sx={{
+                        "& .MuiOutlinedInput-root:hover": {
+                            "& > fieldset": {
+                                borderColor: "#1976d2"
+                            },
+                        }
+                    }}
                 />
                 <Box sx={buttonContainer}>
                     <Button sx={buttonStyle} variant="contained" endIcon={<SendIcon />}>

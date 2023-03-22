@@ -184,8 +184,8 @@ export default function CustomPaginationActionsTable({ item }) {
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={handleClose} sx={{ ":hover": { bgcolor: "#A6A6A6", color: "white" }, backgroundColor: "#C1C1C1", fontWeight: "600", color: "white", fontSize: "1rem" }}>Cancel</Button>
-                        <Button onClick={handleDelete} type="danger" sx={{ ":hover": { bgcolor: "#BF513D", color: "white" }, backgroundColor: "rgb(221, 107, 85)", fontWeight: "600", color: "white", fontSize: "1rem" }} autoFocus>
+                        <Button onClick={handleClose} sx={{ ":hover": { bgcolor: "#A6A6A6", color: "white" }, backgroundColor: "#C1C1C1", fontWeight: "600", color: "white", fontSize: "1rem", fontFamily: "sans-serif", width: "6rem", padding: ".5rem" }}>Cancel</Button>
+                        <Button onClick={handleDelete} type="danger" sx={{ ":hover": { bgcolor: "#BF513D", color: "white" }, backgroundColor: "rgb(221, 107, 85)", fontWeight: "600", color: "white", width: "11rem", fontSize: "1rem", fontFamily: "sans-serif", padding: ".5rem" }} autoFocus>
                             Yes, Delete it!
                         </Button>
                     </DialogActions>

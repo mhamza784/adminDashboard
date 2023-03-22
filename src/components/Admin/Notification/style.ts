@@ -43,7 +43,8 @@ export const buttonContainer = {
 };
 export const buttonStyle = {
     width: "12%",
-    justifySelf: "flex-end"
+    justifySelf: "flex-end",
+    textTransform: "capitalize"
 };
 
 // Radio Button

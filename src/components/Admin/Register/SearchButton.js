@@ -29,8 +29,8 @@ const SearchButton = ({ setSearchData }) => {
   const [selectedCountry, setSelectedCountry] = useState("any");
   const [selectedState, setSelectedState] = useState("any");
   const [selectedCity, setSelectedCity] = useState("any");
-  const [startAge, setStartAge] = useState(19);
-  const [endAge, setEndAge] = useState(35);
+  const [startAge, setStartAge] = useState(18);
+  const [endAge, setEndAge] = useState(90);
   const [gender, setGender] = useState("");
   const [within, setWithin] = useState("");
   const dispatch = useDispatch();
@@ -93,7 +93,6 @@ const SearchButton = ({ setSearchData }) => {
         >
           <Select
             value={startAge}
-            sx={{ paddingTop: ".3rem" }}
             IconComponent={ArrowDropDownIcon}
             onChange={(e) => setStartAge(e.target.value)}
           >
@@ -105,7 +104,6 @@ const SearchButton = ({ setSearchData }) => {
           </Select>
           <Select
             value={endAge}
-            sx={{ paddingTop: ".3rem" }}
             onChange={(e) => setEndAge(e.target.value)}
           >
             {arr.map((item) => (

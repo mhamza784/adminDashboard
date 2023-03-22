@@ -88,6 +88,7 @@ export const iconColor = {
 export const searchContainer = {
     display: "flex",
     flexWrap: "wrap",
+    width: "100%",
     justifyContent: { sm: "space-between", xs: "flex-start" },
     alignItems: "center",
     gap: { sm: "1rem", xs: ".5rem" },
@@ -95,6 +96,7 @@ export const searchContainer = {
 export const menuLabel = {
     fontWeight: "600",
     fontFamily: "Helvetica",
+    paddingBottom: ".3rem"
 }
 export const ageMenu = {
     display: "flex",

@@ -9,7 +9,24 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import RegisteredList from "./Register";
 import NotificationTab from "./Notification";
 import { TabContainer, TabsBox, TabsLink, TabsBody, BoxMargin, iconColor } from "./style";
-import styled from '@emotion/styled'
+import styled from '@emotion/styled';
+// import { createMuiTheme, ThemeProvider } from '@mui/material/styles';
+
+
+// const theme = createMuiTheme({
+//     overrides: {
+//         MuiTab: {
+//             root: {
+//                 '&$selected': {
+//                     color: 'white',
+//                     backgroundColor: 'blue',
+//                 },
+//             },
+//             selected: {},
+//         },
+//     },
+// });
+
 
 const useStyles = styled({
     tabs: {
@@ -74,26 +91,29 @@ export default function VerticalTabs() {
         <Box
             sx={TabContainer}
         >
+            {/* <ThemeProvider theme={theme}> */}
             <Tabs
                 orientation="vertical"
                 variant="scrollable"
                 value={value}
                 onChange={handleChange}
                 aria-label="Vertical tabs example"
-                className={classes.tabs}
+                // className={classes.tabs}
                 sx={TabsBox}
-                TabIndicatorProps={{
-                    sx: {
-                        backgroundColor: 'red',
-                        background: "blue",
-                        color: "red"
-                    },
-                }}
+                indicatorColor="none"
+            // TabIndicatorProps={{
+            //     sx: {
+            //         backgroundColor: 'red',
+            //         background: "blue",
+            //         color: "red"
+            //     },
+            // }}
             >
                 <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Members User" iconPosition="start" label="Registered User" sx={TabsLink} {...a11yProps(0)} />
                 <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Notification" iconPosition="start" label="Notification" sx={TabsLink} {...a11yProps(1)} />
                 {/* <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Email" iconPosition="start" label="Email Users" sx={TabsLink} {...a11yProps(2)} /> */}
             </Tabs>
+            {/* </ThemeProvider> */}
             <Box sx={TabsBody}>
                 <TabPanel value={value} index={0} >
                     <Box >

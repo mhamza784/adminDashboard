@@ -10,6 +10,10 @@ export const TabContainer = {
     marginTop: ".5rem"
 };
 export const TabsBox = {
+    "& button": { borderRadius: 2 },
+    // "& button:hover": { backgroundColor: "blue" },
+    "& button:focus": { backgroundColor: "#1EB0C4", color: "white", },
+    "& button:active": { backgroundColor: "#1EB0C4", color: "white" },
     display: "flex",
     borderColor: 'divider',
     padding: "0",
@@ -18,6 +22,8 @@ export const TabsBox = {
     width: "15%",
 };
 export const TabsLink = {
+
+    // ":active": { bgcolor: "#A6A6A6", color: "white", background: "#A6A6A6" },
     justifyContent: "flex-start",
     minHeight: '38px',
     height: '40px',
