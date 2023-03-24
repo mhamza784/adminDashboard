@@ -15,7 +15,9 @@ export const TabsBox = {
     padding: "0",
     borderRadius: ".4rem",
     alignItems: "center",
-    width: "15%",
+    // width: "15%",
+    marginLeft: "1rem"
+
 };
 export const TabsLink = {
     '&.Mui-selected': {
@@ -24,7 +26,6 @@ export const TabsLink = {
         borderRight: 1,
         borderLeft: 1,
         borderColor: 'divider',
-        // backgroundClip: "padding-box",
     },
     justifyContent: "flex-start",
     minHeight: '38px',
@@ -37,10 +38,12 @@ export const TabsLink = {
     textTransform: "capitalize",
     fontWeight: "bold",
     fontFamily: "sans-serif",
-    color: "#19191D"
+    color: "#19191D",
+    // marginBottom: ".1rem"
 };
 export const TabsBody = {
-    width: "88%"
+    minWidth: "85%",
+    width: "85%"
 };
 export const BoxMargin = {
     mt: "1.1rem"

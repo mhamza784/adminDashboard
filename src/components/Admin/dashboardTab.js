@@ -9,39 +9,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import RegisteredList from "./Register";
 import NotificationTab from "./Notification";
 import { TabContainer, TabsBox, TabsLink, TabsBody, BoxMargin, iconColor } from "./style";
-import styled from '@emotion/styled';
-// import { createMuiTheme, ThemeProvider } from '@mui/material/styles';
 
-
-// const theme = createMuiTheme({
-//     overrides: {
-//         MuiTab: {
-//             root: {
-//                 '&$selected': {
-//                     color: 'white',
-//                     backgroundColor: 'blue',
-//                 },
-//             },
-//             selected: {},
-//         },
-//     },
-// });
-
-
-const useStyles = styled({
-    tabs: {
-
-        "& .MuiTab-root.indicator": {
-            backgroundColor: "transparent",
-            height: 3,
-            BorderAllRounded: 2,
-        },
-        "& .MuiTab-root.Mui-selected": {
-            color: 'white',
-            backgroundColor: "#1EB0C4",
-        }
-    }
-})
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -86,7 +54,6 @@ export default function VerticalTabs() {
         setLabel(event.target.name);
     };
 
-    const classes = useStyles();
     return (
         <Box
             sx={TabContainer}
@@ -98,7 +65,6 @@ export default function VerticalTabs() {
                 value={value}
                 onChange={handleChange}
                 aria-label="Vertical tabs example"
-                // className={classes.tabs}
                 sx={TabsBox}
                 indicatorColor="none"
             // TabIndicatorProps={{
