@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -39,11 +39,11 @@ function stableSort(array, comparator) {
     return stabilizedThis.map((el) => el[0]);
 }
 export default function EnhancedTable({ item }) {
+
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('email');
     const [selected, setSelected] = React.useState([]);
     const [page, setPage] = React.useState(0);
-    const [dense, setDense] = React.useState(false);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
     const handleRequestSort = (event, property) => {
@@ -55,7 +55,6 @@ export default function EnhancedTable({ item }) {
     const handleSelectAllClick = (event) => {
         if (event.target.checked) {
             const newSelected = item.map((n) => n.name);
-            console.log(newSelected), "all selected";
             setSelected(newSelected);
             return;
         }
@@ -63,7 +62,7 @@ export default function EnhancedTable({ item }) {
 
     };
 
-    const handleClick = (event, name) => {
+    const handleClick = (event, name, email) => {
         const selectedIndex = selected.indexOf(name);
         let newSelected = [];
 
@@ -92,16 +91,15 @@ export default function EnhancedTable({ item }) {
         setPage(0);
     };
 
-
-
     const isSelected = (name) => selected.indexOf(name) !== -1;
 
     const emptyRows =
         page > 0 ? Math.max(0, (1 + page) * rowsPerPage - Object.keys(item).length) : 0;
+
     return (
         <Box >
             <Paper sx={{ mb: 1 }}>
-                <EnhancedTableToolbar numSelected={selected.length} />
+                <EnhancedTableToolbar numSelected={selected.length} userList={item} />
                 <TableContainer>
                     <Table
                         sx={{ minWidth: 450 }}
@@ -121,11 +119,11 @@ export default function EnhancedTable({ item }) {
                                 .map((row, index) => {
                                     const isItemSelected = isSelected(row.name);
                                     const labelId = `enhanced-table-checkbox-${index}`;
-                                    console.log(isItemSelected), "new selected";
+                                    // console.log(isItemSelected), "new selected";
                                     return (
                                         <TableRow
                                             hover
-                                            onClick={(event) => handleClick(event, row.name)}
+                                            onClick={(event) => handleClick(event, row.name,)}
                                             role="checkbox"
                                             aria-checked={isItemSelected}
                                             tabIndex={-1}

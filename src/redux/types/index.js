@@ -11,6 +11,7 @@ export const DELETE_USER_BY_ID = "DELETE_USER_BY_ID";
 export const LOGOUT = "LOGOUT";
 export const USER_SEARCH = "USER_SEARCH";
 export const SINGLE_USER = "SINGLE_USER";
+export const SEND_USER_NOTIFICATION = "SEND_USER_NOTIFICATION";
 
 export const HOT_LIST_USER = "HOT_LIST_USER";
 export const HOT_LIST_BY_YOU_USER = "HOT_LIST_BY_YOU_USER";

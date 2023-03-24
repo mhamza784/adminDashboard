@@ -10,10 +10,6 @@ export const TabContainer = {
     marginTop: ".5rem"
 };
 export const TabsBox = {
-    "& button": { borderRadius: 2 },
-    // "& button:hover": { backgroundColor: "blue" },
-    "& button:focus": { backgroundColor: "#1EB0C4", color: "white", },
-    "& button:active": { backgroundColor: "#1EB0C4", color: "white" },
     display: "flex",
     borderColor: 'divider',
     padding: "0",
@@ -22,8 +18,14 @@ export const TabsBox = {
     width: "15%",
 };
 export const TabsLink = {
-
-    // ":active": { bgcolor: "#A6A6A6", color: "white", background: "#A6A6A6" },
+    '&.Mui-selected': {
+        color: 'white',
+        background: "#1EB0C4",
+        borderRight: 1,
+        borderLeft: 1,
+        borderColor: 'divider',
+        // backgroundClip: "padding-box",
+    },
     justifyContent: "flex-start",
     minHeight: '38px',
     height: '40px',
@@ -35,7 +37,6 @@ export const TabsLink = {
     textTransform: "capitalize",
     fontWeight: "bold",
     fontFamily: "sans-serif",
-    padding: ".5rem",
     color: "#19191D"
 };
 export const TabsBody = {

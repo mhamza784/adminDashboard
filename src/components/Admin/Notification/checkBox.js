@@ -11,52 +11,23 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { radioContainer, radioButton, radioButtonTitle } from "./style"
-import List from "./tableData";
-import API from "@/redux/service/base.service";
-import { BASE_URL_API } from "@/redux/service/base.config";
+import List from "./table";
 import { useDispatch, useSelector } from "react-redux";
-import { searchData } from "@/redux/slices/users";
 
 import { GET_ALL_USERS } from "@/redux/types";
 
 export default function RowRadioButtonsGroup() {
     const { token } = useSelector((state) => state.users);
-    const [gender, setGender] = useState("male");
     const [checked, setChecked] = React.useState([true, false]);
     const [selectedChecked, setSelectedChecked] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
-
+    const { allUser, user } = useSelector((state) => state.users);
+    const [selectData, setSelectData] = useState(allUser);
+    const dispatch = useDispatch();
 
     const handleClose = () => {
         setAnchorEl(null);
     };
-    const handleSearch = async (event) => {
-        const data = {
-            gender,
-        };
-        // console.log("data");
-
-        try {
-            const res = await API.post(`${BASE_URL_API}/api/user/search`, data, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-
-            console.log("res", res.data);
-            // setSearchData(res.data.data);
-            dispatch(searchData(res.data.data))
-
-
-        } catch (err) {
-            console.log("err", err);
-
-        }
-
-    };
-
-
-
     const handleChange1 = (event) => {
         if (checked[0] && checked[1]) {
             setChecked([event.target.checked, event.target.checked]);
@@ -97,29 +68,19 @@ export default function RowRadioButtonsGroup() {
 
     };
 
-
-
-    const { allUser, user } = useSelector((state) => state.users);
-    const dispatch = useDispatch();
     useEffect(() => {
         dispatch({
             type: GET_ALL_USERS,
         });
     }, [dispatch]);
-    console.log(allUser, "all users");
-    const [selectItem, setSelectedItem] = useState([]);
 
-    const [selectData, setSelectData] = useState(
-        allUser
-    );
     const openList = (event) => {
         setAnchorEl(event.currentTarget);
         setSelectData(allUser.filter((item) => item.gender == checked[0]))
-
     };
-    console.log(allUser.filter((item) => item.country), "gender");
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
+
     const children = (
         <Box sx={{ display: 'flex', flexDirection: 'row' }}>
             <FormControlLabel
@@ -132,6 +93,7 @@ export default function RowRadioButtonsGroup() {
             />
         </Box>
     );
+
     return (
         <FormControl sx={radioContainer} >
             <Box sx={radioButton}>
