@@ -13,24 +13,18 @@ const Index = () => {
     const dispatch = useDispatch();
 
     const selectedMembers = [...new Set(checkedData)];
-    const userEmail = selectedMembers.map(item => item.email)
-    // const uniqueItems = [...new Set(userEmail)];
-    // let uniqueUser = userEmail.filter((element, index) => {
-    //     return userEmail.indexOf(element) === index;
-    // });
+    const membersEmail = selectedMembers.map(item => item.email)
     const handleMessage = () => {
-        // console.log("checked data parents ", "title:", title, "description:", message, "users:", userEmail)
+        // console.log("checked data parents ", "title:", title, "description:", message, "users:", membersEmail)
         dispatch({
             type: SEND_USER_NOTIFICATION,
             payload: {
                 title,
                 description: message,
-                users: checkedData,
+                users: membersEmail,
             },
         });
     }
-
-    // console.log("checked data parents ", userEmail);
     return (
         <>
             <Box component="text" sx={mainHeading}>
