@@ -30,6 +30,16 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { searchData } from "@/redux/slices/users";
 
+
+function descendingComparator(a, b, orderBy) {
+    if (b[orderBy] < a[orderBy]) {
+        return -1;
+    }
+    if (b[orderBy] > a[orderBy]) {
+        return 1;
+    }
+    return 0;
+}
 function TablePaginationActions(props) {
     const theme = useTheme();
     const { count, page, rowsPerPage, onPageChange } = props;
@@ -83,7 +93,22 @@ function TablePaginationActions(props) {
         </Box>
     );
 }
-
+function stableSort(array, comparator) {
+    const stabilizedThis = array.map((el, index) => [el, index]);
+    stabilizedThis.sort((a, b) => {
+        const order = comparator(a[0], b[0]);
+        if (order !== 0) {
+            return order;
+        }
+        return a[1] - b[1];
+    });
+    return stabilizedThis.map((el) => el[0]);
+}
+function getComparator(order, orderBy) {
+    return order === 'desc'
+        ? (a, b) => descendingComparator(a, b, orderBy)
+        : (a, b) => -descendingComparator(a, b, orderBy);
+}
 TablePaginationActions.propTypes = {
     count: PropTypes.number.isRequired,
     onPageChange: PropTypes.func.isRequired,
@@ -112,6 +137,8 @@ const rows = [
 ].sort((a, b) => (a.calories < b.calories ? -1 : 1));
 
 export default function CustomPaginationActionsTable({ item }) {
+    const [order, setOrder] = React.useState('asc');
+    const [orderBy, setOrderBy] = React.useState('email');
     const { allUser, user } = useSelector((state) => state.users);
     const [selectData, setSelectData] = useState(allUser);
     const [page, setPage] = React.useState(0);
@@ -193,48 +220,47 @@ export default function CustomPaginationActionsTable({ item }) {
             </Dialog>
             <Table sx={{ minWidth: 400 }} aria-label="custom pagination table">
                 <TableBody >
-                    {(rowsPerPage > 0
-                        ? allUser.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                        : allUser
-                    ).map((row) => (
-                        <TableRow key={row.name} >
-                            <TableCell component="th" scope="row" align="center" sx={{ paddingLeft: "3rem" }}>
-                                <Box sx={ProfileContainer}>
-                                    <Avatar
-                                        sx={AvatarSize}
-                                        alt="logo"
-                                        src={
-                                            row?.myPictures?.length
-                                                ? `${BASE_URL_API}${row?.myPictures[0]}`
-                                                : "photo.png"
-                                        }
-                                    />
-                                    <Box sx={profileData} >
-                                        {row.name}
+                    {stableSort(allUser, getComparator(order, orderBy))
+                        .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage
+                        ).map((row) => (
+                            <TableRow key={row.name} >
+                                <TableCell component="th" scope="row" align="center" sx={{ paddingLeft: "3rem" }}>
+                                    <Box sx={ProfileContainer}>
+                                        <Avatar
+                                            sx={AvatarSize}
+                                            alt="logo"
+                                            src={
+                                                row?.myPictures?.length
+                                                    ? `${BASE_URL_API}${row?.myPictures[0]}`
+                                                    : "photo.png"
+                                            }
+                                        />
+                                        <Box sx={profileData} >
+                                            {row.name}
+                                        </Box>
                                     </Box>
-                                </Box>
-                            </TableCell>
-                            <TableCell align="center">
-                                <Box sx={profileData}>
-                                    {row.createdAt}
-                                </Box>
+                                </TableCell>
+                                <TableCell align="center">
+                                    <Box sx={profileData}>
+                                        {row.createdAt}
+                                    </Box>
 
-                            </TableCell>
-                            <TableCell align="center">
-                                <Box sx={profileData}>{row.gender}</Box>
-                            </TableCell>
-                            <TableCell align="center">
-                                <Box sx={profileEmail}>{row.email}</Box>
-                            </TableCell>
-                            <TableCell align="right">
-                                <Box sx={iconContainer}>
-                                    <Box onClick={() => deleteUser(row._id)} component="img" src="deleteicon.png" width="15px" height="15px" sx={iconColor} />
-                                    <Box component="img" src="removeicon.png" sx={{ marginTop: ".6rem", }} />
-                                </Box>
+                                </TableCell>
+                                <TableCell align="center">
+                                    <Box sx={profileData}>{row.gender}</Box>
+                                </TableCell>
+                                <TableCell align="center">
+                                    <Box sx={profileEmail}>{row.email}</Box>
+                                </TableCell>
+                                <TableCell align="right">
+                                    <Box sx={iconContainer}>
+                                        <Box onClick={() => deleteUser(row._id)} component="img" src="deleteicon.png" width="15px" height="15px" sx={iconColor} />
+                                        <Box component="img" src="removeicon.png" sx={{ marginTop: ".6rem", }} />
+                                    </Box>
 
-                            </TableCell>
-                        </TableRow>
-                    ))}
+                                </TableCell>
+                            </TableRow>
+                        ))}
 
                     {emptyRows > 0 && (
                         <TableRow style={{ height: 53 * emptyRows }}>
