@@ -1,37 +1,44 @@
+import React, { useState } from 'react';
 import { Box } from "@mui/material";
-import React from "react";
-import CkeckBox from "./checkBox";
-import Table from "./table";
-import { Grid, Paper } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import Message from "./message";
-import { mainHeading, gridContainer, gridMessage, tablePadding } from "./style";
+import { mainHeading } from "./style";
+import Main from "./notificationBody"
+import { useDispatch } from 'react-redux';
+import { SEND_USER_NOTIFICATION } from "@/redux/types";
 
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-}));
+const Index = () => {
 
-const NewMessagesUI = () => {
+    const [checkedData, setCheckedData] = useState([]);
+    const [title, setTitle] = useState();
+    const [message, setMessage] = useState();
+    const dispatch = useDispatch();
 
+    const selectedMembers = [...new Set(checkedData)];
+    const userEmail = selectedMembers.map(item => item.email)
+    // const uniqueItems = [...new Set(userEmail)];
+    // let uniqueUser = userEmail.filter((element, index) => {
+    //     return userEmail.indexOf(element) === index;
+    // });
+    const handleMessage = () => {
+        // console.log("checked data parents ", "title:", title, "description:", message, "users:", userEmail)
+        dispatch({
+            type: SEND_USER_NOTIFICATION,
+            payload: {
+                title,
+                description: message,
+                users: checkedData,
+            },
+        });
+    }
+
+    // console.log("checked data parents ", userEmail);
     return (
         <>
             <Box component="text" sx={mainHeading}>
                 Notification
             </Box>
-            <Box sx={gridContainer}>
-                <Grid container >
-                    <Grid item xs={8} >
-                        <Item><CkeckBox /></Item>
-                        <Item sx={gridMessage}><Message /></Item>
-                    </Grid>
-                </Grid>
-            </Box>
+            <Main setCheckedData={setCheckedData} checkedData={checkedData} setTitle={setTitle} setMessage={setMessage} handleMessage={handleMessage} selectedMembers={selectedMembers} />
         </ >
     );
 };
 
-export default NewMessagesUI;
+export default Index;

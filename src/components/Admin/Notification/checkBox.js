@@ -16,7 +16,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { GET_ALL_USERS } from "@/redux/types";
 
-export default function RowRadioButtonsGroup() {
+export default function RowRadioButtonsGroup(props) {
+    const { setCheckedData, checkedData, selectedMembers } = props;
+
     const { token } = useSelector((state) => state.users);
     const [checked, setChecked] = React.useState([true, false]);
     const [selectedChecked, setSelectedChecked] = React.useState(false);
@@ -29,22 +31,26 @@ export default function RowRadioButtonsGroup() {
         setAnchorEl(null);
     };
     const handleChange1 = (event) => {
+
         if (checked[0] && checked[1]) {
             setChecked([event.target.checked, event.target.checked]);
             setSelectData(allUser)
             // setAnchorEl(event.currentTarget);
         } else {
+            setCheckedData([]);
             setChecked([event.target.checked, event.target.checked]);
             setSelectData(allUser)
             setAnchorEl(event.currentTarget);
         }
     };
     const handleChange2 = (event) => {
+
         if (checked[0]) {
             setChecked([event.target.checked, checked[1]])
             setSelectData(allUser.filter((item) => item.gender == "male"))
             // setAnchorEl(event.currentTarget);
         } else {
+            setCheckedData([]);
             setChecked([event.target.checked, checked[1]])
             setSelectData(allUser.filter((item) => item.gender == "male"))
             setAnchorEl(event.currentTarget);
@@ -52,11 +58,13 @@ export default function RowRadioButtonsGroup() {
     };
 
     const handleChange3 = (event) => {
+
         if (checked[1]) {
             setChecked([checked[0], event.target.checked]);
             setSelectData(allUser.filter((item) => item.gender == "female"))
             // setAnchorEl(event.currentTarget);
         } else {
+            setCheckedData([]);
             setChecked([checked[0], event.target.checked]);
             setSelectData(allUser.filter((item) => item.gender == "female"))
             setAnchorEl(event.currentTarget);
@@ -65,6 +73,13 @@ export default function RowRadioButtonsGroup() {
     };
     const handleChange4 = (event) => {
         setSelectedChecked(event.target.checked);
+        // let uniqueData = checkedData.filter((element, index) => {
+        //     return checkedData.indexOf(element) === index;
+        // });
+
+        // console.log("checked data in checked box ", selectedMembers);
+        setSelectData(selectedMembers)
+        setAnchorEl(event.currentTarget);
 
     };
 
@@ -119,7 +134,7 @@ export default function RowRadioButtonsGroup() {
                         {children}
                         <FormControlLabel
                             label="Select User"
-                            control={<Checkbox checked={selectedChecked} onChange={handleChange4} onClick={openList} />}
+                            control={<Checkbox checked={selectedChecked} onChange={handleChange4} />}
                         />
                     </RadioGroup>
                     <Popover
@@ -132,7 +147,7 @@ export default function RowRadioButtonsGroup() {
                             horizontal: 'right',
                         }}
                     >
-                        <Typography><List item={selectData} /></Typography>
+                        <Typography><List item={selectData} setCheckedData={setCheckedData} /></Typography>
                     </Popover>
                 </Box>
             </Box>

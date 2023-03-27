@@ -11,6 +11,7 @@ import Checkbox from '@mui/material/Checkbox';
 import EnhancedTableHead from "./TableComponents/EnhancedTableHead";
 import EnhancedTableToolbar from "./TableComponents/EnhancedTableToolbar";
 
+
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
         return -1;
@@ -38,7 +39,9 @@ function stableSort(array, comparator) {
     });
     return stabilizedThis.map((el) => el[0]);
 }
-export default function EnhancedTable({ item }) {
+export default function EnhancedTable({ item, setCheckedData }) {
+
+    // const [checkedData, setCheckedData] = useState([]);
 
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('email');
@@ -54,6 +57,12 @@ export default function EnhancedTable({ item }) {
 
     const handleSelectAllClick = (event) => {
         if (event.target.checked) {
+            setCheckedData((prevCheckedData) => [...prevCheckedData, ...item]);
+        } else {
+            setCheckedData([])
+        }
+
+        if (event.target.checked) {
             const newSelected = item.map((n) => n.name);
             setSelected(newSelected);
             return;
@@ -62,7 +71,24 @@ export default function EnhancedTable({ item }) {
 
     };
 
-    const handleClick = (event, name, email) => {
+    const handleClick = (event, name, email,) => {
+
+        const checked = event.target.checked;
+        if (checked) {
+            setCheckedData((prevCheckedData) => [...prevCheckedData, email]);
+        } else {
+            setCheckedData((prevCheckedData) => prevCheckedData.filter((prevRow) => prevRow !== email));
+        }
+        //  else {
+        //     setCheckedData((prevCheckedData) => prevCheckedData.filter((prevRow) => prevRow !== email));
+        // }
+        // if (selected[0]) {
+        //     console.log("nothong");
+
+        // } else {
+        //     console.log(user, "id check box")
+        // };
+
         const selectedIndex = selected.indexOf(name);
         let newSelected = [];
 
@@ -110,6 +136,7 @@ export default function EnhancedTable({ item }) {
                             order={order}
                             orderBy={orderBy}
                             onSelectAllClick={handleSelectAllClick}
+                            // onSelectAllClick={(event) => handleSelectAllClick(event, item.email)}
                             onRequestSort={handleRequestSort}
                             rowCount={Object.keys(item).length}
                         />
@@ -123,7 +150,7 @@ export default function EnhancedTable({ item }) {
                                     return (
                                         <TableRow
                                             hover
-                                            onClick={(event) => handleClick(event, row.name,)}
+                                            onClick={(event) => handleClick(event, row.name, row)}
                                             role="checkbox"
                                             aria-checked={isItemSelected}
                                             tabIndex={-1}

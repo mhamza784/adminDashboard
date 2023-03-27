@@ -25,7 +25,7 @@ export default function SearchBar(props) {
         setFilteredUsers(filteredUsers);
         dispatch(searchData(filteredUsers));
     };
-    console.log(filteredUsers, "filter")
+    // console.log(filteredUsers, "filter")
 
     return (
         <Paper

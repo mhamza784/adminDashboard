@@ -4,23 +4,24 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import SendIcon from '@mui/icons-material/Send';
 import { messageHeading, dividerStyle, buttonContainer, buttonStyle } from "./style";
-import { useDispatch } from 'react-redux';
-import { SEND_USER_NOTIFICATION } from "@/redux/types";
 
-const message = () => {
-    const [title, setTitle] = useState();
-    const [message, setMessage] = useState();
-    const dispatch = useDispatch();
-    const handleMessage = () => {
-        console.log(title, message)
-        dispatch({
-            type: SEND_USER_NOTIFICATION,
-            payload: {
-                title,
-                message,
-            },
-        });
-    }
+
+const message = (props) => {
+
+    const { setTitle, setMessage, handleMessage } = props;
+    // const [title, setTitle] = useState();
+    // const [message, setMessage] = useState();
+    // const dispatch = useDispatch();
+    // const handleMessage = () => {
+    //     console.log(title, message)
+    //     dispatch({
+    //         type: SEND_USER_NOTIFICATION,
+    //         payload: {
+    //             title,
+    //             message,
+    //         },
+    //     });
+    // }
     return (
         <>
             <Box component="text" sx={messageHeading} >

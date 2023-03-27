@@ -10,6 +10,7 @@ import {
   confirmUserPasswordAPI,
   deleteUserByIdAPI,
   // userSearchAPI
+  userNotificationAPI,
   getUserByIdAPI,
 } from "../service/user.service";
 import {
@@ -36,7 +37,8 @@ import {
   SINGLE_USER,
   FORGET_PASSWORD,
   CONFIRM_PASSWORD,
-  DELETE_USER_BY_ID
+  DELETE_USER_BY_ID,
+  SEND_USER_NOTIFICATION
   // USER_SEARCH
 } from "../types";
 import Router from "next/router";
@@ -100,6 +102,27 @@ export function* createUserSaga(action) {
 //   }
 // }
 
+export function* UserNotificationSaga(action) {
+  const users = yield userNotificationAPI(action.payload);
+  if (users?.data?.status == 200) {
+    // yield put(loginUseSlice(users?.data?.data));
+    yield put(
+      createAlert({
+        type: "success",
+        message: users?.data?.message,
+        status: true,
+      })
+    );
+  } else {
+    yield put(
+      createAlert({
+        type: "error",
+        message: users?.data?.message,
+        status: true,
+      })
+    );
+  }
+}
 export function* UserLoginSaga(action) {
   const users = yield userLoginAPI(action.payload);
   if (users?.data?.status == 200) {
@@ -246,4 +269,5 @@ export function* watchUsersAsync() {
   yield takeEvery(LOGOUT, logoutUserSaga);
   yield takeEvery(SINGLE_USER, getUserByIdSaga);
   yield takeEvery(DELETE_USER_BY_ID, deleteUserByIdSaga);
+  yield takeEvery(SEND_USER_NOTIFICATION, UserNotificationSaga);
 }
