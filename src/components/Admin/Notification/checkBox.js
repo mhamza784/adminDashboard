@@ -47,12 +47,12 @@ export default function RowRadioButtonsGroup(props) {
 
         if (checked[0]) {
             setChecked([event.target.checked, checked[1]])
-            setSelectData(allUser.filter((item) => item.gender == "male"))
+            setSelectData(allUser?.filter((item) => item.gender == "male"))
             // setAnchorEl(event.currentTarget);
         } else {
             setCheckedData([]);
             setChecked([event.target.checked, checked[1]])
-            setSelectData(allUser.filter((item) => item.gender == "male"))
+            setSelectData(allUser?.filter((item) => item.gender == "male"))
             setAnchorEl(event.currentTarget);
         }
     };
@@ -61,12 +61,12 @@ export default function RowRadioButtonsGroup(props) {
 
         if (checked[1]) {
             setChecked([checked[0], event.target.checked]);
-            setSelectData(allUser.filter((item) => item.gender == "female"))
+            setSelectData(allUser?.filter((item) => item.gender == "female"))
             // setAnchorEl(event.currentTarget);
         } else {
             setCheckedData([]);
             setChecked([checked[0], event.target.checked]);
-            setSelectData(allUser.filter((item) => item.gender == "female"))
+            setSelectData(allUser?.filter((item) => item.gender == "female"))
             setAnchorEl(event.currentTarget);
         }
 
@@ -91,7 +91,7 @@ export default function RowRadioButtonsGroup(props) {
 
     const openList = (event) => {
         setAnchorEl(event.currentTarget);
-        setSelectData(allUser.filter((item) => item.gender == checked[0]))
+        setSelectData(allUser?.filter((item) => item.gender == checked[0]))
     };
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;

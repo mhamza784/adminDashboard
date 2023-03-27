@@ -29,15 +29,15 @@ function getComparator(order, orderBy) {
 }
 
 function stableSort(array, comparator) {
-    const stabilizedThis = array.map((el, index) => [el, index]);
-    stabilizedThis.sort((a, b) => {
+    const stabilizedThis = array?.map((el, index) => [el, index]);
+    stabilizedThis?.sort((a, b) => {
         const order = comparator(a[0], b[0]);
         if (order !== 0) {
             return order;
         }
         return a[1] - b[1];
     });
-    return stabilizedThis.map((el) => el[0]);
+    return stabilizedThis?.map((el) => el[0]);
 }
 export default function EnhancedTable({ item, setCheckedData }) {
 
@@ -132,18 +132,19 @@ export default function EnhancedTable({ item, setCheckedData }) {
                         aria-labelledby="tableTitle"
                     >
                         <EnhancedTableHead
+
                             numSelected={selected.length}
                             order={order}
                             orderBy={orderBy}
                             onSelectAllClick={handleSelectAllClick}
                             // onSelectAllClick={(event) => handleSelectAllClick(event, item.email)}
                             onRequestSort={handleRequestSort}
-                            rowCount={Object.keys(item).length}
+                            rowCount={item ? item.length : 0}
                         />
                         <TableBody>
                             {stableSort(item, getComparator(order, orderBy))
-                                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                .map((row, index) => {
+                                ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                ?.map((row, index) => {
                                     const isItemSelected = isSelected(row.name);
                                     const labelId = `enhanced-table-checkbox-${index}`;
                                     // console.log(isItemSelected), "new selected";
@@ -189,7 +190,7 @@ export default function EnhancedTable({ item, setCheckedData }) {
                 <TablePagination
                     rowsPerPageOptions={[3, 5]}
                     component="div"
-                    count={Object.keys(item).length}
+                    count={item ? item.length : 0}
                     rowsPerPage={rowsPerPage}
                     page={page}
                     onPageChange={handleChangePage}

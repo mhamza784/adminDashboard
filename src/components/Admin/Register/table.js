@@ -134,7 +134,7 @@ export default function CustomPaginationActionsTable({ item }) {
         // dispatch({ type: DELETE_USER_BY_ID, payload: { id: id } });
 
 
-        console.log(id);
+        console.log("Delete user id", id);
     }
     const handleDelete = () => {
         dispatch({ type: DELETE_USER_BY_ID, payload: { id: deleteID } });

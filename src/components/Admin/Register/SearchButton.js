@@ -64,7 +64,7 @@ const SearchButton = ({ setSearchData }) => {
     <Box
       sx={searchContainer}
     >
-      <FormControl size="small" variant="standard">
+      <FormControl size="small" variant="standard"  >
         <Box
           id="demo-select-small"
           sx={menuLabel}
@@ -81,7 +81,7 @@ const SearchButton = ({ setSearchData }) => {
           <MenuItem value="female">Female</MenuItem>
         </Select>
       </FormControl>
-      <FormControl size="small" variant="standard">
+      <FormControl size="small" variant="standard"  >
         <Box
           id="demo-select-small"
           sx={menuLabel}
@@ -114,7 +114,7 @@ const SearchButton = ({ setSearchData }) => {
           </Select>
         </Box>
       </FormControl>
-      <FormControl variant="standard">
+      <FormControl size="small" variant="standard"  >
         <Box
           id="demo-select-small"
           sx={menuLabel}
@@ -135,7 +135,7 @@ const SearchButton = ({ setSearchData }) => {
           ))}
         </Select>
       </FormControl>
-      <FormControl variant="standard">
+      <FormControl size="small" variant="standard"  >
         <Box
           id="demo-select-small"
           sx={menuLabel}
@@ -156,7 +156,7 @@ const SearchButton = ({ setSearchData }) => {
           ))}
         </Select>
       </FormControl>
-      <FormControl variant="standard">
+      <FormControl size="small" variant="standard"  >
         <Box
           id="demo-select-small"
           sx={menuLabel}
