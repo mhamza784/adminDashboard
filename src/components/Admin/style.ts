@@ -13,11 +13,15 @@ export const TabsBox = {
     display: "flex",
     borderColor: 'divider',
     padding: "0",
-    borderRadius: ".4rem",
     alignItems: "center",
-    // width: "15%",
-    marginLeft: "1rem"
-
+    marginLeft: "1rem",
+    paddingY: .15,
+    boxShadow: 3,
+    bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
+    color: (theme) =>
+        theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
+    borderRadius: 2,
+    minWidth: 205,
 };
 export const TabsLink = {
     '&.Mui-selected': {
@@ -29,21 +33,20 @@ export const TabsLink = {
     },
     justifyContent: "flex-start",
     minHeight: '38px',
-    height: '40px',
+    height: '38px',
     fontSize: ".9rem",
-    borderRight: 1,
-    borderLeft: 1,
+    // borderRight: 1,
+    // borderLeft: 1,
     borderColor: 'divider',
     borderRadius: '.4rem',
     textTransform: "capitalize",
     fontWeight: "bold",
     fontFamily: "sans-serif",
     color: "#19191D",
-    // marginBottom: ".1rem"
 };
 export const TabsBody = {
-    minWidth: "85%",
-    width: "85%"
+    width: '100%',
+    maxWidth: 1800,
 };
 export const BoxMargin = {
     mt: "1.1rem"

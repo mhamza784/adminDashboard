@@ -61,12 +61,14 @@ export default function VerticalTabs() {
             {/* <ThemeProvider theme={theme}> */}
             <Tabs
                 orientation="vertical"
+                // variant="fullWidth"
                 variant="scrollable"
                 value={value}
                 onChange={handleChange}
                 aria-label="Vertical tabs example"
                 sx={TabsBox}
                 indicatorColor="none"
+
             // TabIndicatorProps={{
             //     sx: {
             //         backgroundColor: 'red',
@@ -80,7 +82,7 @@ export default function VerticalTabs() {
                 {/* <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Email" iconPosition="start" label="Email Users" sx={TabsLink} {...a11yProps(2)} /> */}
             </Tabs>
             {/* </ThemeProvider> */}
-            <Box sx={TabsBody}>
+            <Box sx={TabsBody} fullWidth={true}>
                 <TabPanel value={value} index={0} >
                     <Box >
                         <Breadcrumbs value={label} />
