@@ -7,7 +7,7 @@ import Tooltip from '@mui/material/Tooltip';
 import SearchBar from "../tableSearchBar";
 
 const EnhancedTableToolbar = (props) => {
-    const { numSelected, userList, } = props;
+    const { numSelected, userList, setSelectData } = props;
     return (
         <Toolbar
             sx={{
@@ -21,7 +21,7 @@ const EnhancedTableToolbar = (props) => {
         >
             {numSelected > 0 ? (
                 <Typography
-                    sx={{ flex: '1 1 100%' }}
+                    sx={{ flex: '1 1 100%', textAlign: "start" }}
                     color="inherit"
                     variant="subtitle1"
                     component="div"
@@ -30,7 +30,7 @@ const EnhancedTableToolbar = (props) => {
                 </Typography>
             ) : (
                 <Typography
-                    sx={{ flex: '1 1 100%', justifySelf: "flex-start" }}
+                    sx={{ flex: '1 1 100%', justifySelf: "flex-start", textAlign: "start" }}
                     variant="h6"
                     id="tableTitle"
                     component="div"
@@ -41,11 +41,11 @@ const EnhancedTableToolbar = (props) => {
 
             {numSelected > 0 ? (
                 <Tooltip title="Filter list">
-                    <SearchBar userList={userList} />
+                    <SearchBar userList={userList} setSelectData={setSelectData} />
                 </Tooltip>
             ) : (
                 <Tooltip title="Filter list">
-                    <SearchBar userList={userList} />
+                    <SearchBar userList={userList} setSelectData={setSelectData} />
                 </Tooltip>
             )}
         </Toolbar>

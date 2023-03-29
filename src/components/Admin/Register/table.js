@@ -134,7 +134,7 @@ export default function CustomPaginationActionsTable({ item }) {
         // dispatch({ type: DELETE_USER_BY_ID, payload: { id: id } });
 
 
-        console.log("Delete user id", id);
+        // console.log("Delete user id", id);
     }
     const handleDelete = () => {
         dispatch({ type: DELETE_USER_BY_ID, payload: { id: deleteID } });
@@ -161,7 +161,7 @@ export default function CustomPaginationActionsTable({ item }) {
         setPage(0);
     };
 
-    console.log("all users data", allUser);
+    // console.log("all users data", allUser);
     return (
         <TableContainer component={Paper}>
             <Dialog
@@ -227,7 +227,7 @@ export default function CustomPaginationActionsTable({ item }) {
                             <TableCell align="right">
                                 <Box sx={iconContainer}>
                                     <Box onClick={() => deleteUser(row._id)} component="img" src="deleteicon.png" width="15px" height="15px" sx={iconColor} />
-                                    <Box component="img" src="removeicon.png" sx={{ marginTop: ".6rem", }} />
+                                    {/* <Box component="img" src="removeicon.png" sx={{ marginTop: ".6rem", }} /> */}
                                 </Box>
 
                             </TableCell>

@@ -21,7 +21,7 @@ const NewMessagesUI = ({ handleListItemClick }) => {
             type: GET_ALL_USERS,
         });
     }, [dispatch]);
-    console.log(allUser, "all users");
+    // console.log(allUser, "all users");
     const [selectItem, setSelectedItem] = useState([]);
 
 

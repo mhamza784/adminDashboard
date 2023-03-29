@@ -1,11 +1,14 @@
 import { Box } from "@mui/material";
-import React from "react";
-import CkeckBox from "./checkBox";
+import React, { useCallback, useEffect, useState } from "react";
+// import CkeckBox from "./checkBox";
+import CkeckBox from "./radioBox";
+import List from "./table";
 import Table from "./table";
 import { Grid, Paper } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Message from "./message";
 import { mainHeading, gridContainer, gridMessage, tablePadding } from "./style";
+import { useSelector } from "react-redux";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -16,15 +19,22 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const NewMessagesUI = (props) => {
+    const { allUser, user } = useSelector((state) => state.users);
+    const [selectData, setSelectData] = useState(allUser);
 
+
+    // console.log("search data by filter", selectData);
     const { setCheckedData, setTitle, setMessage, handleMessage, checkedData, selectedMembers } = props;
     return (
         <>
             <Box sx={gridContainer}>
-                <Grid container >
-                    <Grid item xs={8} >
-                        <Item><CkeckBox setCheckedData={setCheckedData} checkedData={checkedData} selectedMembers={selectedMembers} /></Item>
+                <Grid container spacing={3} >
+                    <Grid item xs={12} md={6} >
+                        <Item><CkeckBox setCheckedData={setCheckedData} checkedData={checkedData} selectedMembers={selectedMembers} setSelectData={setSelectData} /></Item>
                         <Item sx={gridMessage}><Message setTitle={setTitle} setMessage={setMessage} handleMessage={handleMessage} /></Item>
+                    </Grid>
+                    <Grid item xs={12} md={6} >
+                        <Item sx={{ p: 0, m: 0, border: 0, boxShadow: 0 }} ><List item={selectData} setCheckedData={setCheckedData} setSelectData={setSelectData} /></Item>
                     </Grid>
                 </Grid>
             </Box>

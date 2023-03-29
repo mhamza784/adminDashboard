@@ -21,7 +21,7 @@ export const TabsBox = {
     color: (theme) =>
         theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
     borderRadius: 2,
-    minWidth: 205,
+    minWidth: 203,
 };
 export const TabsLink = {
     '&.Mui-selected': {

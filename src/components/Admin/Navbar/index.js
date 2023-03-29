@@ -3,11 +3,8 @@ import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
-import IconButton from "@mui/material/IconButton";
 import Toolbar from "@mui/material/Toolbar";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Typography from "@mui/material/Typography";
-import { useRouter } from "next/router";
 import Avatar from "@mui/material/Avatar";
 import Link from "next/link";
 import { Menu, MenuItem } from "@mui/material";
@@ -18,9 +15,6 @@ import { LOGOUT } from "@/redux/types";
 function DrawerAppBar(props) {
   const { user, token } = useSelector((state) => state.users);
   const { window } = props;
-  const router = useRouter();
-
-
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const dispatch = useDispatch();
@@ -67,9 +61,6 @@ function DrawerAppBar(props) {
                 sx={AvatarSize}
                 onClick={handleClick}
               />
-              {/* <IconButton color="black" edge="end">
-                <ExpandMoreIcon onClick={handleClick} />
-              </IconButton> */}
             </Box>
             <Menu
               sx={{ marginTop: "2rem" }}
@@ -102,10 +93,6 @@ function DrawerAppBar(props) {
 }
 
 DrawerAppBar.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window: PropTypes.func,
 };
 

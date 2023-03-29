@@ -11,7 +11,7 @@ function handleClick(event) {
 }
 
 export default function CustomSeparator({ value }) {
-    console.log(value);
+    // console.log(value);
     const breadcrumbs = [
         <Link underline="hover" key="1" fontWeight="bold" color="#A60363" href="/admin" onClick={handleClick}>
             Admin Panel

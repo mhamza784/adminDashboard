@@ -6,12 +6,11 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useDispatch, useSelector } from "react-redux";
 import { searchData } from "@/redux/slices/users";
 
-export default function SearchBar(props) {
+export default function SearchBarInput(props) {
 
-    const dispatch = useDispatch();
-    const { userList, } = props;
+    // const dispatch = useDispatch();
+    const { userList, setSelectData } = props;
     const [searchQuery, setSearchQuery] = useState('');
-    const [filteredUsers, setFilteredUsers] = useState([]);
 
     const handleSearch = (event) => {
         const query = event.target.value;
@@ -22,15 +21,19 @@ export default function SearchBar(props) {
                 user.email.toLowerCase().includes(query.toLowerCase())
             );
         });
-        setFilteredUsers(filteredUsers);
-        dispatch(searchData(filteredUsers));
+        // console.log("search bar data", filteredUsers);
+        setSelectData(filteredUsers);
+        // dispatch(searchData(filteredUsers));
     };
 
+
     return (
+
         <Paper
             component="form"
             sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400, height: "2.1rem" }}
         >
+
             <InputBase
                 sx={{ ml: 1, flex: 1 }}
                 placeholder="Search"

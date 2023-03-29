@@ -39,10 +39,10 @@ function stableSort(array, comparator) {
     });
     return stabilizedThis?.map((el) => el[0]);
 }
-export default function EnhancedTable({ item, setCheckedData }) {
+export default function EnhancedTable({ item, setCheckedData, setSelectData }) {
 
     // const [checkedData, setCheckedData] = useState([]);
-
+    // const [filteredUsers, setFilteredUsers] = useState(item);
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('email');
     const [selected, setSelected] = React.useState([]);
@@ -79,15 +79,6 @@ export default function EnhancedTable({ item, setCheckedData }) {
         } else {
             setCheckedData((prevCheckedData) => prevCheckedData.filter((prevRow) => prevRow !== email));
         }
-        //  else {
-        //     setCheckedData((prevCheckedData) => prevCheckedData.filter((prevRow) => prevRow !== email));
-        // }
-        // if (selected[0]) {
-        //     console.log("nothong");
-
-        // } else {
-        //     console.log(user, "id check box")
-        // };
 
         const selectedIndex = selected.indexOf(name);
         let newSelected = [];
@@ -125,10 +116,10 @@ export default function EnhancedTable({ item, setCheckedData }) {
     return (
         <Box >
             <Paper sx={{ mb: 1 }}>
-                <EnhancedTableToolbar numSelected={selected.length} userList={item} />
-                <TableContainer>
+                <EnhancedTableToolbar numSelected={selected.length} userList={item} setSelectData={setSelectData} />
+                <TableContainer style={{ height: 341 }}>
                     <Table
-                        sx={{ minWidth: 450 }}
+                        sx={{ minWidth: 450, }}
                         aria-labelledby="tableTitle"
                     >
                         <EnhancedTableHead

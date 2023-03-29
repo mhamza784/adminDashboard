@@ -11,7 +11,10 @@ export const forgetPasswordUserAPI = async (user) => API.post(`/user/forgetPassw
 
 export const userLoginAPI = async (user) => API.post(`/user/login`, user);
 
-export const userNotificationAPI = async (user) => API.post(`/user/sendEmailToUsers`, user);
+export const userNotificationAPI = async (user) => {
+  console.log("user in Api server", user);
+  return API.post(`/user/sendEmailToSelectedUsers`, user);
+}
 
 export const userSearchAPI = async (user) => {
   return API.post(`/user/search`, user);

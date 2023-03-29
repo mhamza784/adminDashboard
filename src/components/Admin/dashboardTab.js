@@ -14,7 +14,6 @@ import { TabContainer, TabsBox, TabsLink, TabsBody, BoxMargin, iconColor } from 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
-
     return (
         <div
             role="tabpanel"
@@ -58,30 +57,19 @@ export default function VerticalTabs() {
         <Box
             sx={TabContainer}
         >
-            {/* <ThemeProvider theme={theme}> */}
             <Tabs
                 orientation="vertical"
-                // variant="fullWidth"
                 variant="scrollable"
                 value={value}
                 onChange={handleChange}
                 aria-label="Vertical tabs example"
                 sx={TabsBox}
                 indicatorColor="none"
-
-            // TabIndicatorProps={{
-            //     sx: {
-            //         backgroundColor: 'red',
-            //         background: "blue",
-            //         color: "red"
-            //     },
-            // }}
             >
                 <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Members User" iconPosition="start" label="Registered User" sx={TabsLink} {...a11yProps(0)} />
                 <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Notification" iconPosition="start" label="Notification" sx={TabsLink} {...a11yProps(1)} />
                 {/* <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Email" iconPosition="start" label="Email Users" sx={TabsLink} {...a11yProps(2)} /> */}
             </Tabs>
-            {/* </ThemeProvider> */}
             <Box sx={TabsBody} fullWidth={true}>
                 <TabPanel value={value} index={0} >
                     <Box >

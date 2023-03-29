@@ -29,9 +29,9 @@ const message = (props) => {
             </Box>
             <Box
                 component="form"
-
                 noValidate
                 autoComplete="off"
+                style={{ height: 335 }}
             >
                 <Stack spacing={2}>
                     <Divider sx={dividerStyle} />

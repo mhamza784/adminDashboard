@@ -11,7 +11,7 @@ const Index = () => {
     const [title, setTitle] = useState();
     const [message, setMessage] = useState();
     const dispatch = useDispatch();
-
+    // console.log("Checked Data", checkedData);
     const selectedMembers = [...new Set(checkedData)];
     const membersEmail = selectedMembers.map(item => item.email)
     const handleMessage = () => {
