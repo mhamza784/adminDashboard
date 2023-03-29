@@ -5,7 +5,7 @@ export const mainContainer = {
 };
 export const typography = {
     flexGrow: 1,
-    display: { sm: "block" },
+    display: { sm: "flex" },
     marginLeft: { sm: 0, xs: 1 },
 };
 export const AvatarSize = {

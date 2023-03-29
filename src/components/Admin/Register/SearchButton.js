@@ -17,7 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ArrowDropDownCircleOutlined } from "@mui/icons-material";
 import { searchData } from "@/redux/slices/users";
 
-const SearchButton = ({ setSearchData }) => {
+const SearchButton = () => {
   const { token } = useSelector((state) => state.users);
   const [selectedCountry, setSelectedCountry] = useState("any");
   const [selectedState, setSelectedState] = useState("any");
@@ -45,7 +45,6 @@ const SearchButton = ({ setSearchData }) => {
         },
       });
       console.log("res", res.data);
-      // setSearchData(res.data.data);
       dispatch(searchData(res.data.data))
 
     } catch (err) {

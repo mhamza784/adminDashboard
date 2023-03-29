@@ -4,6 +4,7 @@ import { mainHeading } from "./style";
 import Main from "./notificationBody"
 import { useDispatch } from 'react-redux';
 import { SEND_USER_NOTIFICATION } from "@/redux/types";
+// import Drawer from "./drawer";
 
 const Index = () => {
 

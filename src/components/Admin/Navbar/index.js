@@ -51,6 +51,7 @@ function DrawerAppBar(props) {
                 }}
               />
             </Link>
+
           </Typography>
 
           <Box sx={{ display: "flex" }}>

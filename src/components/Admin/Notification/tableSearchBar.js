@@ -9,22 +9,22 @@ import { searchData } from "@/redux/slices/users";
 export default function SearchBarInput(props) {
 
     // const dispatch = useDispatch();
-    const { userList, setSelectData } = props;
-    const [searchQuery, setSearchQuery] = useState('');
+    const { userList, setSelectData, handleSearch, searchQuery } = props;
+    // const [searchQuery, setSearchQuery] = useState('');
 
-    const handleSearch = (event) => {
-        const query = event.target.value;
-        setSearchQuery(query);
-        const filteredUsers = userList.filter((user) => {
-            return (
-                user.name.toLowerCase().includes(query.toLowerCase()) ||
-                user.email.toLowerCase().includes(query.toLowerCase())
-            );
-        });
-        // console.log("search bar data", filteredUsers);
-        setSelectData(filteredUsers);
-        // dispatch(searchData(filteredUsers));
-    };
+    // const handleSearch = (event) => {
+    //     const query = event.target.value;
+    //     setSearchQuery(query);
+    //     const filteredUsers = userList.filter((user) => {
+    //         return (
+    //             user.name.toLowerCase().includes(query.toLowerCase()) ||
+    //             user.email.toLowerCase().includes(query.toLowerCase())
+    //         );
+    //     });
+    //     console.log("search bar data", filteredUsers);
+    //     // setSelectData(filteredUsers);
+    //     // dispatch(searchData(filteredUsers));
+    // };
 
 
     return (

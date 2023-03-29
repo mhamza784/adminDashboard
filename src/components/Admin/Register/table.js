@@ -149,8 +149,6 @@ export default function CustomPaginationActionsTable({ item }) {
 
 
     // Avoid a layout jump when reaching the last page with empty rows.
-    const emptyRows =
-        page > 0 ? Math.max(0, (1 + page) * rowsPerPage - Object.keys(allUser).length) : 0;
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -160,10 +158,12 @@ export default function CustomPaginationActionsTable({ item }) {
         setRowsPerPage(parseInt(event.target.value, 10));
         setPage(0);
     };
+    const emptyRows =
+        page > 0 ? Math.max(0, (1 + page) * rowsPerPage - Object.keys(allUser).length) : 0;
 
     // console.log("all users data", allUser);
     return (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} sx={{ height: 398 }}>
             <Dialog
                 open={open}
                 onClose={handleClose}
@@ -235,7 +235,7 @@ export default function CustomPaginationActionsTable({ item }) {
                     ))}
 
                     {emptyRows > 0 && (
-                        <TableRow style={{ height: 53 * emptyRows }}>
+                        <TableRow style={{ height: 69 * emptyRows }}>
                             <TableCell colSpan={6} />
                         </TableRow>
                     )}

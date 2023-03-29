@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -48,6 +48,29 @@ export default function EnhancedTable({ item, setCheckedData, setSelectData }) {
     const [selected, setSelected] = React.useState([]);
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
+    const [list, setUserList] = React.useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
+
+    const onSearchChange = (event) => {
+        const query = event.target.value;
+        setSearchQuery(query);
+    }
+
+    const handleSearch = () => {
+        if (searchQuery == "") {
+            setUserList(item);
+            return
+        }
+        const filteredUsers = item.filter((user) => {
+            return (
+                user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                user.email.toLowerCase().includes(searchQuery.toLowerCase())
+            );
+        });
+        console.log("search bar data", filteredUsers);
+        setUserList(filteredUsers);
+        // dispatch(searchData(filteredUsers));
+    };
 
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === 'asc';
@@ -63,7 +86,7 @@ export default function EnhancedTable({ item, setCheckedData, setSelectData }) {
         }
 
         if (event.target.checked) {
-            const newSelected = item.map((n) => n.name);
+            const newSelected = list.map((n) => n.name);
             setSelected(newSelected);
             return;
         }
@@ -111,13 +134,17 @@ export default function EnhancedTable({ item, setCheckedData, setSelectData }) {
     const isSelected = (name) => selected.indexOf(name) !== -1;
 
     const emptyRows =
-        page > 0 ? Math.max(0, (1 + page) * rowsPerPage - Object.keys(item).length) : 0;
+        page > 0 ? Math.max(0, (1 + page) * rowsPerPage - Object.keys(list).length) : 0;
+
+    useEffect(() => {
+        handleSearch()
+    }, [searchQuery, item])
 
     return (
         <Box >
             <Paper sx={{ mb: 1 }}>
-                <EnhancedTableToolbar numSelected={selected.length} userList={item} setSelectData={setSelectData} />
-                <TableContainer style={{ height: 341 }}>
+                <EnhancedTableToolbar numSelected={selected.length} userList={item} setSelectData={setSelectData} handleSearch={onSearchChange} searchQuery={searchQuery} />
+                <TableContainer sx={{ height: 341 }}>
                     <Table
                         sx={{ minWidth: 450, }}
                         aria-labelledby="tableTitle"
@@ -130,10 +157,10 @@ export default function EnhancedTable({ item, setCheckedData, setSelectData }) {
                             onSelectAllClick={handleSelectAllClick}
                             // onSelectAllClick={(event) => handleSelectAllClick(event, item.email)}
                             onRequestSort={handleRequestSort}
-                            rowCount={item ? item.length : 0}
+                            rowCount={list ? list.length : 0}
                         />
                         <TableBody>
-                            {stableSort(item, getComparator(order, orderBy))
+                            {stableSort(list, getComparator(order, orderBy))
                                 ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 ?.map((row, index) => {
                                     const isItemSelected = isSelected(row.name);
@@ -181,7 +208,7 @@ export default function EnhancedTable({ item, setCheckedData, setSelectData }) {
                 <TablePagination
                     rowsPerPageOptions={[3, 5]}
                     component="div"
-                    count={item ? item.length : 0}
+                    count={list ? list.length : 0}
                     rowsPerPage={rowsPerPage}
                     page={page}
                     onPageChange={handleChangePage}

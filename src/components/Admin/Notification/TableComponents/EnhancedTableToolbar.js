@@ -7,7 +7,7 @@ import Tooltip from '@mui/material/Tooltip';
 import SearchBar from "../tableSearchBar";
 
 const EnhancedTableToolbar = (props) => {
-    const { numSelected, userList, setSelectData } = props;
+    const { numSelected, userList, setSelectData, searchQuery, handleSearch } = props;
     return (
         <Toolbar
             sx={{
@@ -41,11 +41,11 @@ const EnhancedTableToolbar = (props) => {
 
             {numSelected > 0 ? (
                 <Tooltip title="Filter list">
-                    <SearchBar userList={userList} setSelectData={setSelectData} />
+                    <SearchBar userList={userList} setSelectData={setSelectData} handleSearch={handleSearch} searchQuery={searchQuery} />
                 </Tooltip>
             ) : (
                 <Tooltip title="Filter list">
-                    <SearchBar userList={userList} setSelectData={setSelectData} />
+                    <SearchBar userList={userList} setSelectData={setSelectData} handleSearch={handleSearch} searchQuery={searchQuery} />
                 </Tooltip>
             )}
         </Toolbar>

@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import React, { useCallback, useEffect, useState } from "react";
 // import CkeckBox from "./checkBox";
-import CkeckBox from "./radioBox";
+import CkeckBox from "./radioBtn";
 import List from "./table";
 import Table from "./table";
 import { Grid, Paper } from '@mui/material';
@@ -21,9 +21,10 @@ const Item = styled(Paper)(({ theme }) => ({
 const NewMessagesUI = (props) => {
     const { allUser, user } = useSelector((state) => state.users);
     const [selectData, setSelectData] = useState(allUser);
+    // const [selectData, setSelectData] = useState(allUser);
 
 
-    // console.log("search data by filter", selectData);
+    console.log("all users", allUser);
     const { setCheckedData, setTitle, setMessage, handleMessage, checkedData, selectedMembers } = props;
     return (
         <>
