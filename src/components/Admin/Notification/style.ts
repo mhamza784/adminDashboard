@@ -51,14 +51,15 @@ export const buttonStyle = {
 // Radio Button
 
 export const radioContainer = {
-    width: "100%",
+    width: '100%',
+    maxWidth: 1800,
 }
 export const radioButton = {
-    display: "flex",
-    textAlign: "center",
-    justifyContent: "flex-start",
+    display: { lg: "flex", md: "flex", sm: "flex", xs: "inline", },
+    textAlign: "start",
+    justifyContent: { lg: "flex-start", md: "flex-start", sm: "flex-start", xs: "center", },
     alignItems: "center",
 }
 export const radioButtonTitle = {
-    marginRight: "6%"
+    marginRight: { lg: "6%", md: "6%", sm: "3%", xs: "1.4%", },
 } 

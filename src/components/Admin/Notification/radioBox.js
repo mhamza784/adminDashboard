@@ -66,19 +66,19 @@ export default function RowRadioButtonsGroup(props) {
                         <FormControlLabel
                             label="All"
                             value="all"
-                            control={<Radio onClick={handleChange1} />}
+                            control={<Radio size="small" onClick={handleChange1} />}
                         />
                         <FormControlLabel
                             label="Male"
                             value="male"
                             control={
-                                <Radio onClick={handleChange2} />
+                                <Radio size="small" onClick={handleChange2} />
                             }
                         />
                         <FormControlLabel
                             label="Female"
                             value="female"
-                            control={<Radio onClick={handleChange3} />}
+                            control={<Radio size="small" onClick={handleChange3} />}
                         />
 
                     </RadioGroup>

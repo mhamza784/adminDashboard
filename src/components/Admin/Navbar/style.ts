@@ -1,6 +1,7 @@
 export const mainContainer = {
     display: "flex",
-    height: "6rem !important"
+    // height: "6rem !important",
+    height: { lg: "6rem", md: "6rem", sm: "4.3rem", xs: "4rem", }
 };
 export const typography = {
     flexGrow: 1,

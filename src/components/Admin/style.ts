@@ -4,7 +4,7 @@
 export const TabContainer = {
     flexGrow: 1,
     bgcolor: 'background.paper',
-    display: 'flex',
+    display: { xxl: "flex", xl: "flex", lg: "flex", md: "flex", sm: "inline", xs: "inline", },
     height: 224,
     alignItems: "start",
     marginTop: ".5rem"
@@ -22,6 +22,18 @@ export const TabsBox = {
         theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
     borderRadius: 2,
     minWidth: 203,
+};
+export const TabsBoxMb = {
+    display: "flex",
+    borderColor: 'divider',
+    padding: "0",
+    alignItems: "center",
+    paddingY: .15,
+    boxShadow: 3,
+    bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
+    color: (theme) =>
+        theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
+    borderRadius: 1,
 };
 export const TabsLink = {
     '&.Mui-selected': {

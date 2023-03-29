@@ -8,8 +8,9 @@ import Breadcrumbs from "./Breadcrumb";
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import RegisteredList from "./Register";
 import NotificationTab from "./Notification";
-import { TabContainer, TabsBox, TabsLink, TabsBody, BoxMargin, iconColor } from "./style";
-
+import { TabContainer, TabsBox, TabsLink, TabsBody, BoxMargin, iconColor, TabsBoxMb } from "./style";
+import { Hidden } from '@mui/material';
+import AppBar from '@mui/material/AppBar';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -57,19 +58,40 @@ export default function VerticalTabs() {
         <Box
             sx={TabContainer}
         >
-            <Tabs
-                orientation="vertical"
-                variant="scrollable"
-                value={value}
-                onChange={handleChange}
-                aria-label="Vertical tabs example"
-                sx={TabsBox}
-                indicatorColor="none"
-            >
-                <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Members User" iconPosition="start" label="Registered User" sx={TabsLink} {...a11yProps(0)} />
-                <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Notification" iconPosition="start" label="Notification" sx={TabsLink} {...a11yProps(1)} />
-                {/* <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Email" iconPosition="start" label="Email Users" sx={TabsLink} {...a11yProps(2)} /> */}
-            </Tabs>
+            <Hidden only={['sm', 'xs']}>
+                <Tabs
+                    orientation="vertical"
+                    variant="scrollable"
+                    value={value}
+                    onChange={handleChange}
+                    aria-label="Vertical tabs example"
+                    sx={TabsBox}
+                    indicatorColor="none"
+                >
+                    <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Members User" iconPosition="start" label="Registered User" sx={TabsLink} {...a11yProps(0)} />
+                    <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Notification" iconPosition="start" label="Notification" sx={TabsLink} {...a11yProps(1)} />
+                    {/* <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Email" iconPosition="start" label="Email Users" sx={TabsLink} {...a11yProps(2)} /> */}
+                </Tabs>
+            </Hidden>
+            <Hidden only={['xl', 'lg', 'md',]}>
+                <AppBar position="static" sx={{ backgroundColor: "transparent", marginBottom: "1rem", }} >
+                    <Tabs
+                        value={value}
+                        onChange={handleChange}
+                        // textColor="inherit"
+                        // variant="fullWidth"
+                        aria-label="full width tabs example"
+                        sx={TabsBoxMb}
+
+
+                        indicatorColor="none"
+                    >
+                        <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Members User" iconPosition="start" label="Registered User" sx={TabsLink} {...a11yProps(0)} />
+                        <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Notification" iconPosition="start" label="Notification" sx={TabsLink} {...a11yProps(1)} />
+                        {/* <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Email" iconPosition="start" label="Email Users" sx={TabsLink} {...a11yProps(2)} /> */}
+                    </Tabs>
+                </AppBar>
+            </Hidden>
             <Box sx={TabsBody} fullWidth={true}>
                 <TabPanel value={value} index={0} >
                     <Box >
@@ -87,9 +109,6 @@ export default function VerticalTabs() {
                         <NotificationTab />
                     </Box>
                 </TabPanel >
-                <TabPanel value={value} index={2}>
-                    Item Three
-                </TabPanel>
             </Box>
         </Box >
     );
