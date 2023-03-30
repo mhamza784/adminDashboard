@@ -25,14 +25,14 @@ const NewMessagesUI = (props) => {
 
 
     console.log("all users", allUser);
-    const { setCheckedData, setTitle, setMessage, handleMessage, checkedData, selectedMembers } = props;
+    const { setCheckedData, setTitle, setMessage, handleMessage, checkedData, selectedMembers, title, message } = props;
     return (
         <>
             <Box sx={gridContainer}>
                 <Grid container spacing={3} >
                     <Grid item xs={12} md={6} >
                         <Item><CkeckBox setCheckedData={setCheckedData} checkedData={checkedData} selectedMembers={selectedMembers} setSelectData={setSelectData} /></Item>
-                        <Item sx={gridMessage}><Message setTitle={setTitle} setMessage={setMessage} handleMessage={handleMessage} /></Item>
+                        <Item sx={gridMessage}><Message message={message} title={title} setTitle={setTitle} setMessage={setMessage} handleMessage={handleMessage} /></Item>
                     </Grid>
                     <Grid item xs={12} md={6} >
                         <Item sx={{ p: 0, m: 0, border: 0, boxShadow: 0 }} ><List item={selectData} setCheckedData={setCheckedData} setSelectData={setSelectData} /></Item>

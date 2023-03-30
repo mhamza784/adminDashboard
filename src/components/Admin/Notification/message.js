@@ -8,7 +8,7 @@ import { messageHeading, dividerStyle, buttonContainer, buttonStyle } from "./st
 
 const message = (props) => {
 
-    const { setTitle, setMessage, handleMessage } = props;
+    const { setTitle, setMessage, handleMessage, title, message } = props;
     // const [title, setTitle] = useState();
     // const [message, setMessage] = useState();
     // const dispatch = useDispatch();
@@ -45,6 +45,7 @@ const message = (props) => {
                             },
 
                         }}
+                        value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         variant="outlined"
                         label="Title"
@@ -53,6 +54,7 @@ const message = (props) => {
 
                     />
                     <TextField
+                        value={message}
                         id="outlined-multiline-static"
                         label="Message"
                         multiline

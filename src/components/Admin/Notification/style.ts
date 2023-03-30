@@ -15,7 +15,7 @@ export const gridContainer = {
     padding: "0"
 };
 export const gridMessage = {
-    marginY: "1rem"
+    marginY: "1.5rem"
 };
 export const tablePadding = {
     padding: "0"

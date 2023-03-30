@@ -144,7 +144,7 @@ export default function EnhancedTable({ item, setCheckedData, setSelectData }) {
         <Box >
             <Paper sx={{ mb: 1 }}>
                 <EnhancedTableToolbar numSelected={selected.length} userList={item} setSelectData={setSelectData} handleSearch={onSearchChange} searchQuery={searchQuery} />
-                <TableContainer sx={{ height: 341 }}>
+                <TableContainer sx={{ height: 345 }}>
                     <Table
                         sx={{ minWidth: 450, }}
                         aria-labelledby="tableTitle"

@@ -4,7 +4,6 @@ import { mainHeading } from "./style";
 import Main from "./notificationBody"
 import { useDispatch } from 'react-redux';
 import { SEND_USER_NOTIFICATION } from "@/redux/types";
-// import Drawer from "./drawer";
 
 const Index = () => {
 
@@ -12,11 +11,11 @@ const Index = () => {
     const [title, setTitle] = useState();
     const [message, setMessage] = useState();
     const dispatch = useDispatch();
-    // console.log("Checked Data", checkedData);
     const selectedMembers = [...new Set(checkedData)];
     const membersEmail = selectedMembers.map(item => item.email)
-    const handleMessage = () => {
-        // console.log("checked data parents ", "title:", title, "description:", message, "users:", membersEmail)
+
+    const handleMessage = (e) => {
+        e.preventDefault();
         dispatch({
             type: SEND_USER_NOTIFICATION,
             payload: {
@@ -25,13 +24,15 @@ const Index = () => {
                 users: membersEmail,
             },
         });
+        setTitle('');
+        setMessage('');
     }
     return (
         <>
             <Box component="text" sx={mainHeading}>
                 Notification
             </Box>
-            <Main setCheckedData={setCheckedData} checkedData={checkedData} setTitle={setTitle} setMessage={setMessage} handleMessage={handleMessage} selectedMembers={selectedMembers} />
+            <Main setCheckedData={setCheckedData} checkedData={checkedData} setTitle={setTitle} message={message} title={title} setMessage={setMessage} handleMessage={handleMessage} selectedMembers={selectedMembers} />
         </ >
     );
 };
