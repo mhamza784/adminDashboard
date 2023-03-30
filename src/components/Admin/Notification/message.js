@@ -35,6 +35,7 @@ const message = (props) => {
             >
                 <Stack spacing={2}>
                     <Divider sx={dividerStyle} />
+                    {/* <span style={{ marginBottom: "-.7rem", fontWeight: 600, alignSelf: "start", color: "black", fontFamily: "sans-serif" }}>Title</span> */}
 
                     <TextField
                         sx={{

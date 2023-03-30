@@ -31,7 +31,7 @@ function DrawerAppBar(props) {
         component="nav"
         sx={{
           background: "#FAFAFA",
-          px: "2%",
+          paddingRight: "2%",
         }}
       >
         <Toolbar>
@@ -44,10 +44,11 @@ function DrawerAppBar(props) {
               <Box
                 component="img"
                 alt="logo"
-                src="LOGOfor.png"
+                src="MyLatinLoveLogo.png"
                 sx={{
                   display: "flex",
-                  width: "7.5rem",
+                  width: { lg: "12rem", xl: "12rem", md: "12rem", sm: "11rem", xs: "8rem", },
+                  marginLeft: "-.6rem",
                 }}
               />
             </Link>
