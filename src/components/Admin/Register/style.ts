@@ -33,13 +33,59 @@ export const tablePagination = {
 };
 
 
-// List Items Data
+// Table List Data
+export const tablePaginationRow = {
+    justifyContent: "center",
+    display: "flex"
+}
 export const MainContainer = {
+    height: 355,
+
+}
+export const tablePage = {
+    flexShrink: 0,
+    ml: 2.5
+}
+export const deleteUserContainer = {
     display: "flex",
-    width: "100%",
-    height: "5rem",
-    justifyContent: "space-between",
+    flexDirection: "column",
+    textAlign: "center",
+    justifyItems: "center",
     alignItems: "center",
+    padding: "1.3rem",
+    width: 530
+}
+export const warningIcon = {
+    color: "#F8BB86",
+    fontSize: "7.5rem"
+}
+export const deleteBtn = {
+    ":hover": { bgcolor: "#BF513D", color: "white" },
+    backgroundColor: "rgb(221, 107, 85)",
+    fontWeight: "600",
+    color: "white",
+    width: "11rem",
+    height: "3rem",
+    fontSize: "1rem",
+    fontFamily: "'Source Sans Pro',sans-serif !important",
+    textTransform: "capitalize",
+}
+export const cancelBtn = {
+    ":hover": { bgcolor: "#A6A6A6", color: "white" },
+    backgroundColor: "#C1C1C1",
+    fontSize: "1rem",
+    height: "3rem",
+    fontWeight: "600",
+    color: "white",
+    fontFamily: "'Source Sans Pro',sans-serif !important",
+    width: "7rem",
+    textTransform: "capitalize"
+}
+export const tableSize = {
+    minWidth: 400
+}
+export const tableCell = {
+    paddingLeft: "3rem"
 }
 export const ProfileContainer = {
     display: "flex",
@@ -84,7 +130,12 @@ export const iconColor = {
 }
 
 // Search Button
-
+export const searchBarBox = {
+    padding: "1rem",
+    marginBottom: "1rem",
+    marginTop: ".6rem",
+    boxShadow: 3
+}
 export const searchContainer = {
     display: "flex",
     flexWrap: "wrap",
@@ -103,3 +154,9 @@ export const ageMenu = {
     justifyContent: "center",
     alignItems: "center",
 }
+export const searchButton = {
+    fontFamily: "Helvetica !important",
+    textTransform: "capitalize !important",
+    marginTop: "1.2rem"
+}
+

@@ -1,20 +1,13 @@
-import {
-  Box, Button, Divider, FormControl, InputLabel, MenuItem, Select, TextField,
-} from "@mui/material";
+import { Box, Button, FormControl, MenuItem, Select, } from "@mui/material";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import React, { useState } from "react";
 import style from "./home.module.css";
-import { searchContainer, menuLabel, ageMenu } from "./style"
-import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
-// import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import IconButton from "@mui/material/IconButton";
-import NativeSelect from "@mui/material/NativeSelect";
-import { arr, WithinValue } from "utils";
+import { searchContainer, menuLabel, ageMenu, searchButton } from "./style";
+import { arr } from "utils";
 import { Country, State, City } from "country-state-city";
 import API from "@/redux/service/base.service";
 import { BASE_URL_API } from "@/redux/service/base.config";
 import { useDispatch, useSelector } from "react-redux";
-import { ArrowDropDownCircleOutlined } from "@mui/icons-material";
 import { searchData } from "@/redux/slices/users";
 
 const SearchButton = () => {
@@ -25,19 +18,16 @@ const SearchButton = () => {
   const [startAge, setStartAge] = useState(18);
   const [endAge, setEndAge] = useState(90);
   const [gender, setGender] = useState("");
-  const [within, setWithin] = useState("");
   const dispatch = useDispatch();
 
   const handleSearch = async () => {
     const data = {
-      age: [Number(startAge), Number(endAge)],
+      age: [Number(startAge), Number(endAge + 1)],
       gender,
       country: selectedCountry?.name,
       state: selectedState?.name,
       city: selectedCity?.name,
     };
-    // console.log("data");
-
     try {
       const res = await API.post(`${BASE_URL_API}/api/user/search`, data, {
         headers: {
@@ -174,11 +164,7 @@ const SearchButton = () => {
       </FormControl>
       <Button
         className={style.searchButton}
-        sx={{
-          fontFamily: "Helvetica !important",
-          textTransform: "capitalize !important",
-          marginTop: "1.2rem"
-        }}
+        sx={searchButton}
         onClick={handleSearch}
       >
         Search

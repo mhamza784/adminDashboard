@@ -12,4 +12,19 @@ export const AvatarSize = {
     color: "#A60363",
     marginLeft: { md: "2rem", lg: "4rem" },
 };
+export const appBar = {
+    background: "#FAFAFA",
+    paddingRight: "2%",
+};
+export const appLogo = {
+    display: "flex",
+    width: { lg: "12rem", xl: "12rem", md: "12rem", sm: "11rem", xs: "8rem", },
+    marginLeft: "-.6rem",
+};
+export const profile = {
+    display: "flex"
+}
+export const profileMenu = {
+    marginTop: "2.5rem"
+}
 

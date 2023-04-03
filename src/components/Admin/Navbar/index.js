@@ -9,7 +9,7 @@ import Avatar from "@mui/material/Avatar";
 import Link from "next/link";
 import { Menu, MenuItem } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { mainContainer, typography, AvatarSize } from "./style";
+import { mainContainer, typography, AvatarSize, appBar, appLogo, profileMenu, profile } from "./style";
 import { LOGOUT } from "@/redux/types";
 
 function DrawerAppBar(props) {
@@ -29,10 +29,7 @@ function DrawerAppBar(props) {
       <CssBaseline />
       <AppBar
         component="nav"
-        sx={{
-          background: "#FAFAFA",
-          paddingRight: "2%",
-        }}
+        sx={appBar}
       >
         <Toolbar>
           <Typography
@@ -45,18 +42,14 @@ function DrawerAppBar(props) {
                 component="img"
                 alt="logo"
                 src="MyLatinLoveLogo.png"
-                sx={{
-                  display: "flex",
-                  width: { lg: "12rem", xl: "12rem", md: "12rem", sm: "11rem", xs: "8rem", },
-                  marginLeft: "-.6rem",
-                }}
+                sx={appLogo}
               />
             </Link>
 
           </Typography>
 
-          <Box sx={{ display: "flex" }}>
-            <Box sx={{ display: "flex" }}>
+          <Box sx={profile}>
+            <Box >
               <Avatar
                 alt="profile"
                 src="Larry.png"
@@ -65,7 +58,7 @@ function DrawerAppBar(props) {
               />
             </Box>
             <Menu
-              sx={{ marginTop: "2rem" }}
+              sx={profileMenu}
               id="demo-positioned-menu"
               aria-labelledby="demo-positioned-button"
               anchorEl={anchorEl}
@@ -80,7 +73,6 @@ function DrawerAppBar(props) {
                 horizontal: "left",
               }}
             >
-              <MenuItem >Profile</MenuItem>
               <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
           </Box>

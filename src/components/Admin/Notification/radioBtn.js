@@ -1,42 +1,30 @@
 import React, { useCallback, useEffect, useState } from "react";
-import {
-    Box,
-    Divider,
-    Popover,
-    Typography
-} from "@mui/material";
+import { Box, } from "@mui/material";
 import { Radio, Checkbox } from '@mui/material';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { radioContainer, radioButton, radioButtonTitle } from "./style"
-import List from "./table";
 import { useDispatch, useSelector } from "react-redux";
 
 import { GET_ALL_USERS } from "@/redux/types";
 
 export default function RowRadioButtonsGroup(props) {
-    const { setCheckedData, checkedData, selectedMembers, setSelectData } = props;
 
-    const { token } = useSelector((state) => state.users);
-    const [checked, setChecked] = React.useState([true, false]);
-    const [selectedChecked, setSelectedChecked] = React.useState(false);
+    const { setSelectData } = props;
     const { allUser, user } = useSelector((state) => state.users);
     const dispatch = useDispatch();
 
 
     const handleChange1 = (event) => {
-        // setCheckedData([]);
         setSelectData(allUser)
     }
     const handleChange2 = (event) => {
-        // setCheckedData([]);
         setSelectData(allUser?.filter((item) => item.gender == "male"))
     };
 
     const handleChange3 = (event) => {
-        // setCheckedData([]);
         setSelectData(allUser?.filter((item) => item.gender == "female"))
     };
 

@@ -7,19 +7,20 @@ import TableRow from '@mui/material/TableRow';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { visuallyHidden } from '@mui/utils';
+import { colLabel } from "../style";
 
 const headCells = [
     {
         id: 'name',
         numeric: false,
         disablePadding: true,
-        label: <Box sx={{ fontWeight: "600", textTransform: "capitalize", fontFamily: "sans-serif" }}>Name</Box>,
+        label: <Box sx={colLabel}>Name</Box>,
     },
     {
         id: 'email',
         numeric: true,
         disablePadding: false,
-        label: <Box sx={{ fontWeight: "600", textTransform: "capitalize", fontFamily: "sans-serif" }}>Email</Box>,
+        label: <Box sx={colLabel}>Email</Box>,
     },
 ];
 const EnhancedTableHead = (props) => {

@@ -7,7 +7,7 @@ export const TabContainer = {
     display: { xxl: "flex", xl: "flex", lg: "flex", md: "flex", sm: "inline", xs: "inline", },
     height: 224,
     alignItems: "start",
-    marginTop: ".5rem"
+    // marginTop: ".5rem"
 };
 export const TabsBox = {
     display: "flex",
@@ -15,8 +15,8 @@ export const TabsBox = {
     padding: "0",
     alignItems: "center",
     marginLeft: "1rem",
-    paddingY: .15,
-    boxShadow: 3,
+    paddingY: 1,
+    boxShadow: 4,
     bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
     color: (theme) =>
         theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
@@ -29,7 +29,7 @@ export const TabsBoxMb = {
     padding: "0",
     alignItems: "center",
     paddingY: .15,
-    boxShadow: 3,
+    boxShadow: 4,
     bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
     color: (theme) =>
         theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',

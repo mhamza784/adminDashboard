@@ -10,6 +10,7 @@ import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
 import EnhancedTableHead from "./TableComponents/EnhancedTableHead";
 import EnhancedTableToolbar from "./TableComponents/EnhancedTableToolbar";
+import { tableContainer, tableContainerHeight, tableWidth, rowHeight, tableRowName } from "./style"
 
 
 function descendingComparator(a, b, orderBy) {
@@ -41,8 +42,6 @@ function stableSort(array, comparator) {
 }
 export default function EnhancedTable({ item, setCheckedData, setSelectData }) {
 
-    // const [checkedData, setCheckedData] = useState([]);
-    // const [filteredUsers, setFilteredUsers] = useState(item);
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('email');
     const [selected, setSelected] = React.useState([]);
@@ -69,7 +68,6 @@ export default function EnhancedTable({ item, setCheckedData, setSelectData }) {
         });
         console.log("search bar data", filteredUsers);
         setUserList(filteredUsers);
-        // dispatch(searchData(filteredUsers));
     };
 
     const handleRequestSort = (event, property) => {
@@ -142,11 +140,11 @@ export default function EnhancedTable({ item, setCheckedData, setSelectData }) {
 
     return (
         <Box >
-            <Paper sx={{ mb: 1 }}>
+            <Paper sx={tableContainer}>
                 <EnhancedTableToolbar numSelected={selected.length} userList={item} setSelectData={setSelectData} handleSearch={onSearchChange} searchQuery={searchQuery} />
-                <TableContainer sx={{ height: 360 }}>
+                <TableContainer sx={tableContainerHeight}>
                     <Table
-                        sx={{ minWidth: 450, }}
+                        sx={tableWidth}
                         aria-labelledby="tableTitle"
                     >
                         <EnhancedTableHead
@@ -155,7 +153,6 @@ export default function EnhancedTable({ item, setCheckedData, setSelectData }) {
                             order={order}
                             orderBy={orderBy}
                             onSelectAllClick={handleSelectAllClick}
-                            // onSelectAllClick={(event) => handleSelectAllClick(event, item.email)}
                             onRequestSort={handleRequestSort}
                             rowCount={list ? list.length : 0}
                         />
@@ -165,7 +162,6 @@ export default function EnhancedTable({ item, setCheckedData, setSelectData }) {
                                 ?.map((row, index) => {
                                     const isItemSelected = isSelected(row.name);
                                     const labelId = `enhanced-table-checkbox-${index}`;
-                                    // console.log(isItemSelected), "new selected";
                                     return (
                                         <TableRow
                                             hover
@@ -175,7 +171,7 @@ export default function EnhancedTable({ item, setCheckedData, setSelectData }) {
                                             tabIndex={-1}
                                             key={row.name}
                                             selected={isItemSelected}
-                                            sx={{ height: 57.5 }}
+                                            sx={rowHeight}
                                         >
                                             <TableCell padding="checkbox">
                                                 <Checkbox
@@ -191,6 +187,7 @@ export default function EnhancedTable({ item, setCheckedData, setSelectData }) {
                                                 id={labelId}
                                                 scope="row"
                                                 padding="none"
+                                                sx={tableRowName}
                                             >
                                                 {row.name}
                                             </TableCell>
@@ -207,7 +204,7 @@ export default function EnhancedTable({ item, setCheckedData, setSelectData }) {
                     </Table>
                 </TableContainer>
                 <TablePagination
-                    rowsPerPageOptions={[3, 5]}
+                    rowsPerPageOptions={[3, 5, 10, 25, { label: 'All', value: -1 }]}
                     component="div"
                     count={list ? list.length : 0}
                     rowsPerPage={rowsPerPage}

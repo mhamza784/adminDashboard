@@ -1,13 +1,11 @@
 import { Box } from "@mui/material";
-import React, { useCallback, useEffect, useState } from "react";
-// import CkeckBox from "./checkBox";
+import React, { useState } from "react";
 import CkeckBox from "./radioBtn";
-import List from "./table";
 import Table from "./table";
 import { Grid, Paper } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Message from "./message";
-import { mainHeading, gridContainer, gridMessage, tablePadding } from "./style";
+import { gridContainer, gridMessage, tableBox } from "./style";
 import { useSelector } from "react-redux";
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -21,7 +19,6 @@ const Item = styled(Paper)(({ theme }) => ({
 const NewMessagesUI = (props) => {
     const { allUser, user } = useSelector((state) => state.users);
     const [selectData, setSelectData] = useState(allUser);
-    // const [selectData, setSelectData] = useState(allUser);
 
 
     console.log("all users", allUser);
@@ -31,11 +28,11 @@ const NewMessagesUI = (props) => {
             <Box sx={gridContainer}>
                 <Grid container spacing={3} >
                     <Grid item xs={12} md={6} >
-                        <Item><CkeckBox setCheckedData={setCheckedData} checkedData={checkedData} selectedMembers={selectedMembers} setSelectData={setSelectData} /></Item>
+                        <Item sx={{ boxShadow: 4 }}><CkeckBox setCheckedData={setCheckedData} checkedData={checkedData} selectedMembers={selectedMembers} setSelectData={setSelectData} /></Item>
                         <Item sx={gridMessage}><Message message={message} title={title} setTitle={setTitle} setMessage={setMessage} handleMessage={handleMessage} /></Item>
                     </Grid>
                     <Grid item xs={12} md={6} >
-                        <Item sx={{ p: 0, m: 0, border: 0, boxShadow: 0 }} ><List item={selectData} setCheckedData={setCheckedData} setSelectData={setSelectData} /></Item>
+                        <Item sx={tableBox} ><Table item={selectData} setCheckedData={setCheckedData} setSelectData={setSelectData} /></Item>
                     </Grid>
                 </Grid>
             </Box>
