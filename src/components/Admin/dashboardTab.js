@@ -68,9 +68,8 @@ export default function VerticalTabs() {
                     sx={TabsBox}
                     indicatorColor="none"
                 >
-                    <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Members User" iconPosition="start" label="Registered User" sx={TabsLink} {...a11yProps(0)} />
+                    <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Registered User" iconPosition="start" label="Registered User" sx={TabsLink} {...a11yProps(0)} />
                     <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Notification" iconPosition="start" label="Notification" sx={TabsLink} {...a11yProps(1)} />
-                    {/* <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Email" iconPosition="start" label="Email Users" sx={TabsLink} {...a11yProps(2)} /> */}
                 </Tabs>
             </Hidden>
             <Hidden only={['xl', 'lg', 'md',]}>
@@ -86,9 +85,8 @@ export default function VerticalTabs() {
 
                         indicatorColor="none"
                     >
-                        <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Members User" iconPosition="start" label="Registered User" sx={TabsLink} {...a11yProps(0)} />
+                        <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Registered User" iconPosition="start" label="Registered User" sx={TabsLink} {...a11yProps(0)} />
                         <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Notification" iconPosition="start" label="Notification" sx={TabsLink} {...a11yProps(1)} />
-                        {/* <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Email" iconPosition="start" label="Email Users" sx={TabsLink} {...a11yProps(2)} /> */}
                     </Tabs>
                 </AppBar>
             </Hidden>
