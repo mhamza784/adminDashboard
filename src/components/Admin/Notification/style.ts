@@ -39,7 +39,8 @@ export const dividerStyle = {
 export const buttonContainer = {
     justifySelf: "flex-end",
     display: "flex",
-    justifyContent: "end"
+    justifyContent: "end",
+    marginTop: "1rem"
 };
 export const buttonStyle = {
     width: '100%',

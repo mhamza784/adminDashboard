@@ -144,7 +144,7 @@ export default function EnhancedTable({ item, setCheckedData, setSelectData }) {
         <Box >
             <Paper sx={{ mb: 1 }}>
                 <EnhancedTableToolbar numSelected={selected.length} userList={item} setSelectData={setSelectData} handleSearch={onSearchChange} searchQuery={searchQuery} />
-                <TableContainer sx={{ height: 345 }}>
+                <TableContainer sx={{ height: 360 }}>
                     <Table
                         sx={{ minWidth: 450, }}
                         aria-labelledby="tableTitle"
@@ -175,6 +175,7 @@ export default function EnhancedTable({ item, setCheckedData, setSelectData }) {
                                             tabIndex={-1}
                                             key={row.name}
                                             selected={isItemSelected}
+                                            sx={{ height: 57.5 }}
                                         >
                                             <TableCell padding="checkbox">
                                                 <Checkbox

@@ -177,7 +177,7 @@ const SearchButton = () => {
         sx={{
           fontFamily: "Helvetica !important",
           textTransform: "capitalize !important",
-          marginTop: "1rem"
+          marginTop: "1.2rem"
         }}
         onClick={handleSearch}
       >
