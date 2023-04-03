@@ -1,11 +1,30 @@
+// Table Search Bar
+export const searchBarContainer = {
+    p: '2px 4px',
+    display: 'flex',
+    alignItems: 'center',
+    width: 400,
+    boxShadow: 3,
+    height: "3rem"
+};
+export const searchBarInput = {
+    ml: 1,
+    flex: 1,
 
+};
+export const iconButton = {
+    p: '10px'
+}
 // Index page
 
 export const mainHeading = {
+    display: "flex",
+    flexWrap: "wrap",
+    width: "100%",
+    justifyContent: { sm: "space-between", xs: "flex-start" },
     fontWeight: "600",
     fontSize: "1.6rem",
     fontStyle: "normal",
-    textShadow: "2px 2px 4px  #808080",
     letterSpacing: ".1rem",
 };
 export const tableContainer = {
@@ -39,7 +58,7 @@ export const tablePaginationRow = {
     display: "flex"
 }
 export const MainContainer = {
-    height: 355,
+    height: 420,
 
 }
 export const tablePage = {
@@ -122,6 +141,7 @@ export const iconContainer = {
     fontFamily: "sans-serif",
     color: " #425466",
     fontSize: ".75rem",
+    paddingLeft: "1rem"
 
 }
 export const iconColor = {

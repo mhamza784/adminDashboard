@@ -131,15 +131,15 @@ export function* UserLoginSaga(action) {
     yield put(
       createAlert({
         type: "success",
-        message: users?.data?.message,
-        status: true,
+        // message: users?.data?.message,
+        // status: true,
       })
     );
   } else {
     yield put(
       createAlert({
         type: "error",
-        message: users?.data?.message,
+        // message: users?.data?.message,
         status: true,
       })
     );

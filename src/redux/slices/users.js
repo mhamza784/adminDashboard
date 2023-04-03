@@ -70,7 +70,7 @@ const users = createSlice({
     //   return state;
     // },
     deleteUserSlice: (state, action) => {
-      console.log(action.payload, "hecked id");
+      // console.log(action.payload, "hecked id");
       state = state.filter((i) => i._id !== action.payload);
 
       return state;

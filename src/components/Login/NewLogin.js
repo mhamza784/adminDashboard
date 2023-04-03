@@ -138,7 +138,7 @@ const NewLogin = () => {
                           onMouseDown={handleMouseDownPassword}
                           sx={{ background: "white", width: "100%" }}
                         >
-                          {showPassword ? <VisibilityOff /> : <Visibility />}
+                          {showPassword ? <Visibility /> : <VisibilityOff />}
                         </Button>
                       </InputAdornment>
                     ),

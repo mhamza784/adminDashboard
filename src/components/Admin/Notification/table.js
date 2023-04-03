@@ -66,7 +66,7 @@ export default function EnhancedTable({ item, setCheckedData, setSelectData }) {
                 user.email.toLowerCase().includes(searchQuery.toLowerCase())
             );
         });
-        console.log("search bar data", filteredUsers);
+        // console.log("search bar data", filteredUsers);
         setUserList(filteredUsers);
     };
 

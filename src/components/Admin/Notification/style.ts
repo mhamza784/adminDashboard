@@ -5,7 +5,6 @@ export const mainHeading = {
     fontWeight: "600",
     fontSize: "1.6rem",
     fontStyle: "normal",
-    textShadow: "2px 2px 4px  #808080",
     letterSpacing: ".1rem",
 };
 export const gridContainer = {

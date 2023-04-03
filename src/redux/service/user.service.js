@@ -12,7 +12,7 @@ export const forgetPasswordUserAPI = async (user) => API.post(`/user/forgetPassw
 export const userLoginAPI = async (user) => API.post(`/user/login`, user);
 
 export const userNotificationAPI = async (user) => {
-  console.log("user in Api server", user);
+  // console.log("user in Api server", user);
   return API.post(`/user/sendEmailToSelectedUsers`, user);
 }
 
@@ -28,7 +28,7 @@ export const updateUserPasswordAPI = async (user) => {
   return API.put(`/user/password/${user.id}`, user);
 };
 export const confirmUserPasswordAPI = async (user) => {
-  console.log(user, "service");
+  // console.log(user, "service");
   return API.put(`/user/link`, user);
 };
 export const deleteUserByIdAPI = async ({ id }) => {

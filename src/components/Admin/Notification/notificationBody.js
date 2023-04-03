@@ -21,7 +21,7 @@ const NewMessagesUI = (props) => {
     const [selectData, setSelectData] = useState(allUser);
 
 
-    console.log("all users", allUser);
+    // console.log("all users", allUser);
     const { setCheckedData, setTitle, setMessage, handleMessage, checkedData, selectedMembers, title, message } = props;
     return (
         <>

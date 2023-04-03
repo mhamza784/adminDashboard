@@ -29,6 +29,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { searchData } from "@/redux/slices/users";
+import SearchBar from "./tableSearchBar";
+import TableHead from '@mui/material/TableHead';
 
 function TablePaginationActions(props) {
     const theme = useTheme();
@@ -91,20 +93,14 @@ TablePaginationActions.propTypes = {
     rowsPerPage: PropTypes.number.isRequired,
 };
 
-export default function CustomPaginationActionsTable({ item }) {
+export default function CustomPaginationActionsTable({ item, handleSearch, searchQuery, list, setUserList }) {
     const { allUser, user } = useSelector((state) => state.users);
-    const [selectData, setSelectData] = useState(allUser);
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
     const [deleteID, setDeleteID] = React.useState();
     const [open, setOpen] = React.useState(false);
     const dispatch = useDispatch();
-    console.log(item);
-    useEffect(() => {
-        dispatch({
-            type: GET_ALL_USERS,
-        });
-    }, []);
+
 
 
     const deleteUser = (id) => {
@@ -113,8 +109,9 @@ export default function CustomPaginationActionsTable({ item }) {
     }
     const handleDelete = () => {
         dispatch({ type: DELETE_USER_BY_ID, payload: { id: deleteID } });
-
         dispatch(searchData(allUser.filter((item) => item._id !== deleteID)));
+
+        setUserList((list.filter((item) => item._id !== deleteID)))
         setOpen(false);
     };
 
@@ -131,9 +128,17 @@ export default function CustomPaginationActionsTable({ item }) {
         setPage(0);
     };
     const emptyRows =
-        page > 0 ? Math.max(0, (1 + page) * rowsPerPage - Object.keys(allUser).length) : 0;
+        page > 0 ? Math.max(0, (1 + page) * rowsPerPage - Object.keys(list).length) : 0;
+    useEffect(() => {
+        dispatch({
+            type: GET_ALL_USERS,
+        });
+        handleSearch()
+
+    }, [searchQuery, item]);
     return (
         <Paper sx={{ boxShadow: 3 }} >
+
             <TableContainer sx={MainContainer}>
                 <Dialog
                     open={open}
@@ -160,12 +165,21 @@ export default function CustomPaginationActionsTable({ item }) {
                     </Box>
                 </Dialog>
                 <Table sx={tableSize} aria-label="custom pagination table">
+                    <TableHead>
+                        <TableRow >
+                            <TableCell sx={{ fontWeight: "600", paddingLeft: "4.2rem" }} >Name</TableCell>
+                            <TableCell sx={{ fontWeight: "600" }} align="center">Gender</TableCell>
+                            <TableCell sx={{ fontWeight: "600" }} align="center">Age</TableCell>
+                            <TableCell sx={{ fontWeight: "600" }} align="center">Email</TableCell>
+                            <TableCell sx={{ fontWeight: "600", }} align="left">Action</TableCell>
+                        </TableRow>
+                    </TableHead>
                     <TableBody >
                         {(rowsPerPage > 0
-                            ? allUser?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                            : allUser
+                            ? list?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                            : list
                         )?.map((row) => (
-                            <TableRow key={row.name} >
+                            <TableRow key={row.name} sx={{ height: 57.5 }} >
                                 <TableCell component="th" scope="row" align="center" sx={tableCell}>
                                     <Box sx={ProfileContainer}>
                                         <Avatar
@@ -184,16 +198,16 @@ export default function CustomPaginationActionsTable({ item }) {
                                 </TableCell>
                                 <TableCell align="center">
                                     <Box sx={profileData}>
-                                        {row.createdAt}
+                                        {row.gender}
                                     </Box>
                                 </TableCell>
                                 <TableCell align="center">
-                                    <Box sx={profileData}>{row.gender}</Box>
+                                    <Box sx={profileData}>{row.age}</Box>
                                 </TableCell>
                                 <TableCell align="center">
                                     <Box sx={profileEmail}>{row.email}</Box>
                                 </TableCell>
-                                <TableCell align="right">
+                                <TableCell align="center">
                                     <Box sx={iconContainer}>
                                         <Box onClick={() => deleteUser(row._id)} component="img" src="deleteicon.png" width="15px" height="15px" sx={iconColor} />
                                     </Box>
@@ -214,7 +228,7 @@ export default function CustomPaginationActionsTable({ item }) {
                 sx={tablePaginationRow}
                 rowsPerPageOptions={[3, 5, 10, 25, { label: 'All', value: -1 }]}
                 colSpan={3}
-                count={allUser ? allUser.length : 0}
+                count={list ? list.length : 0}
                 rowsPerPage={rowsPerPage}
                 page={page}
                 SelectProps={{
@@ -227,6 +241,6 @@ export default function CustomPaginationActionsTable({ item }) {
                 onRowsPerPageChange={handleChangeRowsPerPage}
                 ActionsComponent={TablePaginationActions}
             />
-        </Paper>
+        </Paper >
     );
 }
