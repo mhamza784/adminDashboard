@@ -2,6 +2,7 @@ export const GET_USERS = "GET_USERS";
 export const GET_ALL_USERS = "GET_ALL_USERS";
 export const CREATE_USER = "CREATE_USER";
 export const USER_LOGIN = "USER_LOGIN";
+export const ADMIN_LOGIN = "ADMIN_LOGIN";
 export const UPDATE_PASSWORD = "UPDATE_PASSWORD";
 export const FORGET_PASSWORD = "FORGET_PASSWORD";
 export const CONFIRM_PASSWORD = "CONFIRM_PASSWORD";

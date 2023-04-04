@@ -60,7 +60,7 @@ export default function EnhancedTable({ item, setCheckedData, setSelectData }) {
             setUserList(item);
             return
         }
-        const filteredUsers = item.filter((user) => {
+        const filteredUsers = item?.filter((user) => {
             return (
                 user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 user.email.toLowerCase().includes(searchQuery.toLowerCase())

@@ -10,7 +10,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import Link from "next/link";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import PublicIcon from "@mui/icons-material/Public";
-import { USER_LOGIN } from "@/redux/types";
+import { ADMIN_LOGIN } from "@/redux/types";
 import { useDispatch } from "react-redux";
 
 const NewLogin = () => {
@@ -54,7 +54,7 @@ const NewLogin = () => {
     if (!email || !password) {
       alert("please enter email or password");
     }
-    dispatch({ type: USER_LOGIN, payload: { email, password } });
+    dispatch({ type: ADMIN_LOGIN, payload: { email, password } });
   }, [email, password, dispatch]);
   return (
     <Box

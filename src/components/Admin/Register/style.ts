@@ -136,7 +136,7 @@ export const profileEmail = {
     color: " #425466",
 }
 export const iconContainer = {
-    display: { md: "flex", xs: "none", },
+    display: { md: "flex", xs: "flex", },
     fontWeight: "bold",
     fontFamily: "sans-serif",
     color: " #425466",

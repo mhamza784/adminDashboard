@@ -59,6 +59,14 @@ const users = createSlice({
         singleUser: action.payload,
       };
     },
+
+    loginAdminSlice: (state, action) => {
+      return {
+        ...state,
+        user: action.payload.user,
+        token: action.payload.token,
+      };
+    },
     // searchUsersSlice: (state, action) => {
     //   console.log("action", action);
     //   return { ...state, searchUser: action.payload };
@@ -80,6 +88,7 @@ const users = createSlice({
 export const {
   getUsersSlice,
   loginUserSlice,
+  loginAdminSlice,
   createUserSlice,
   UpdateUserSlice,
   forgetPasswordUserSlice,

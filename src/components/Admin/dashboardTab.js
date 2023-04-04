@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Breadcrumbs from "./Breadcrumb";
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import RegisteredList from "./Register";
 import NotificationTab from "./Notification";
 import { TabContainer, TabsBox, TabsLink, TabsBody, BoxMargin, iconColor, TabsBoxMb } from "./style";
@@ -77,16 +78,14 @@ export default function VerticalTabs() {
                     <Tabs
                         value={value}
                         onChange={handleChange}
-                        // textColor="inherit"
-                        // variant="fullWidth"
                         aria-label="full width tabs example"
                         sx={TabsBoxMb}
 
 
                         indicatorColor="none"
                     >
-                        <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Registered User" iconPosition="start" label="Registered User" sx={TabsLink} {...a11yProps(0)} />
-                        <Tab icon={<NavigateNextIcon sx={iconColor} />} name="Notification" iconPosition="start" label="Notification" sx={TabsLink} {...a11yProps(1)} />
+                        <Tab icon={<ExpandMoreIcon sx={iconColor} />} name="Registered User" iconPosition="start" label="Registered User" sx={TabsLink} {...a11yProps(0)} />
+                        <Tab icon={<ExpandMoreIcon sx={iconColor} />} name="Notification" iconPosition="start" label="Notification" sx={TabsLink} {...a11yProps(1)} />
                     </Tabs>
                 </AppBar>
             </Hidden>

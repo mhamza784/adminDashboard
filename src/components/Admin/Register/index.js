@@ -28,7 +28,7 @@ const NewMessagesUI = () => {
             setUserList(allUser);
             return
         }
-        const filteredUsers = allUser.filter((user) => {
+        const filteredUsers = allUser?.filter((user) => {
             return (
                 user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 user.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -43,6 +43,13 @@ const NewMessagesUI = () => {
         });
         setUserList(filteredUsers);
     };
+    useEffect(() => {
+        dispatch({
+            type: GET_ALL_USERS,
+        });
+        handleSearch()
+
+    }, []);
 
     return (
         <>

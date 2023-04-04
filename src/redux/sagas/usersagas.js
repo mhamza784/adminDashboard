@@ -9,7 +9,7 @@ import {
   forgetPasswordUserAPI,
   confirmUserPasswordAPI,
   deleteUserByIdAPI,
-  // userSearchAPI
+  adminLoginAPI,
   userNotificationAPI,
   getUserByIdAPI,
 } from "../service/user.service";
@@ -23,6 +23,7 @@ import {
   forgetPasswordUserSlice,
   confirmPasswordUserSlice,
   deleteUserSlice,
+  loginAdminSlice,
   // searchUsersSlice
 } from "../slices/users";
 import {
@@ -34,6 +35,7 @@ import {
   UPDATE_PASSWORD,
   UPDATE_USER,
   USER_LOGIN,
+  ADMIN_LOGIN,
   SINGLE_USER,
   FORGET_PASSWORD,
   CONFIRM_PASSWORD,
@@ -123,6 +125,40 @@ export function* UserNotificationSaga(action) {
     );
   }
 }
+export function* AdminLoginSaga(action) {
+  const users = yield adminLoginAPI(action.payload);
+  if (users?.data?.status == 200) {
+    if (users?.data?.data?.user?.role == "ADMIN") {
+      yield put(loginAdminSlice(users?.data?.data));
+      Router.push("/admin");
+      yield put(
+        createAlert({
+          type: "success",
+        })
+      );
+    } else {
+      console.log("user", users);
+      yield put(
+        createAlert({
+          type: "error",
+          message: "unauthorized user",
+          status: true,
+        })
+      );
+    }
+
+  } else {
+    yield put(
+      createAlert({
+        type: "error",
+        message: users?.data?.message,
+        status: true,
+      })
+    );
+  }
+}
+
+
 export function* UserLoginSaga(action) {
   const users = yield userLoginAPI(action.payload);
   if (users?.data?.status == 200) {
@@ -261,6 +297,7 @@ export function* watchUsersAsync() {
   yield takeEvery(GET_ALL_USERS, getUsersSaga);
   yield takeEvery(CREATE_USER, createUserSaga);
   yield takeEvery(USER_LOGIN, UserLoginSaga);
+  yield takeEvery(ADMIN_LOGIN, AdminLoginSaga);
   yield takeEvery(UPDATE_USER, updateUserSaga);
   yield takeEvery(DEACTIVE_USER, updateDeactiveUserSaga);
   yield takeEvery(UPDATE_PASSWORD, updateUserPasswordSaga);

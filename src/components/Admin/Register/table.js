@@ -101,9 +101,6 @@ export default function CustomPaginationActionsTable({ item, handleSearch, searc
     const [open, setOpen] = React.useState(false);
     const dispatch = useDispatch();
 
-    console.log("list data", list);
-
-
     const deleteUser = (id) => {
         setDeleteID(id)
         setOpen(true);
@@ -111,8 +108,6 @@ export default function CustomPaginationActionsTable({ item, handleSearch, searc
     const handleDelete = () => {
         dispatch({ type: DELETE_USER_BY_ID, payload: { id: deleteID } });
         dispatch(searchData(allUser.filter((item) => item._id !== deleteID)));
-
-        setUserList((list.filter((item) => item._id !== deleteID)))
         setOpen(false);
     };
 
@@ -131,12 +126,9 @@ export default function CustomPaginationActionsTable({ item, handleSearch, searc
     const emptyRows =
         page > 0 ? Math.max(0, (1 + page) * rowsPerPage - Object.keys(list).length) : 0;
     useEffect(() => {
-        dispatch({
-            type: GET_ALL_USERS,
-        });
         handleSearch()
 
-    }, [item, searchQuery, list]);
+    }, [item, searchQuery,]);
     return (
         <Paper sx={{ boxShadow: 3 }} >
 
