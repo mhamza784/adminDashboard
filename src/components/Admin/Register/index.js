@@ -12,9 +12,11 @@ import Table from "./table";
 
 const NewMessagesUI = () => {
     const { allUser, user } = useSelector((state) => state.users);
-    const [selectData, setSelectData] = useState(allUser);
-    const [list, setUserList] = React.useState([]);
+    const [list, setUserList] = useState(allUser);
+
     const [searchQuery, setSearchQuery] = useState('');
+    const dispatch = useDispatch();
+
 
     const onSearchChange = (event) => {
         const query = event.target.value;
@@ -23,10 +25,10 @@ const NewMessagesUI = () => {
 
     const handleSearch = () => {
         if (searchQuery == "") {
-            setUserList(selectData);
+            setUserList(allUser);
             return
         }
-        const filteredUsers = selectData.filter((user) => {
+        const filteredUsers = allUser.filter((user) => {
             return (
                 user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 user.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -50,7 +52,7 @@ const NewMessagesUI = () => {
             <Box sx={{ justifyContent: "end", display: "flex", marginY: "1rem" }}>
 
             </Box>
-            <Table item={selectData} searchQuery={searchQuery} handleSearch={handleSearch} list={list} setUserList={setUserList} />
+            <Table item={allUser} searchQuery={searchQuery} handleSearch={handleSearch} list={list} setUserList={setUserList} />
         </>
     );
 };

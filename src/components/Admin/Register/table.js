@@ -101,6 +101,7 @@ export default function CustomPaginationActionsTable({ item, handleSearch, searc
     const [open, setOpen] = React.useState(false);
     const dispatch = useDispatch();
 
+    console.log("list data", list);
 
 
     const deleteUser = (id) => {
@@ -135,7 +136,7 @@ export default function CustomPaginationActionsTable({ item, handleSearch, searc
         });
         handleSearch()
 
-    }, [searchQuery, item]);
+    }, [item, searchQuery, list]);
     return (
         <Paper sx={{ boxShadow: 3 }} >
 
