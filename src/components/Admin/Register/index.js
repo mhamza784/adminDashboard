@@ -30,8 +30,13 @@ const NewMessagesUI = () => {
             return (
                 user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 user.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                user.gender.toLowerCase() == searchQuery.toLowerCase() ||
-                user.age == searchQuery
+                user.gender.slice(0, 2).toLowerCase() == searchQuery.toLowerCase() ||
+                user.gender.slice(0, 3).toLowerCase() == searchQuery.toLowerCase() ||
+                user.gender.slice(0, 4).toLowerCase() == searchQuery.toLowerCase() ||
+                user.gender.slice(0, 5).toLowerCase() == searchQuery.toLowerCase() ||
+                user.gender.slice(0, 6).toLowerCase() == searchQuery.toLowerCase() ||
+                user.age.toString().slice(0, 1) === searchQuery.toLowerCase() ||
+                user.age.toString().slice(0, 2) === searchQuery.toLowerCase()
             );
         });
         setUserList(filteredUsers);
@@ -40,7 +45,7 @@ const NewMessagesUI = () => {
     return (
         <>
             <Box component="text" sx={mainHeading}>
-                Registered User<SearchBar onSearchChange={onSearchChange} searchQuery={searchQuery} />
+                Registered User <SearchBar sx={{ marginTop: "1rem", }} onSearchChange={onSearchChange} searchQuery={searchQuery} />
             </Box>
             <Box sx={{ justifyContent: "end", display: "flex", marginY: "1rem" }}>
 
