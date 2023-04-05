@@ -89,6 +89,13 @@ export const deleteBtn = {
     fontFamily: "'Source Sans Pro',sans-serif !important",
     textTransform: "capitalize",
 }
+export const tableHead = {
+    fontWeight: "600"
+}
+export const tableHeadName = {
+    fontWeight: "600",
+    paddingLeft: "4.2rem"
+}
 export const cancelBtn = {
     ":hover": { bgcolor: "#A6A6A6", color: "white" },
     backgroundColor: "#C1C1C1",
@@ -126,10 +133,9 @@ export const profileData = {
     textTransform: "capitalize"
 }
 export const profileEmail = {
-    px: "1rem",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
+    justifyContent: "start",
     fontSize: ".84rem",
     fontWeight: "bold",
     fontFamily: "sans-serif",

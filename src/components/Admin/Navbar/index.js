@@ -45,9 +45,7 @@ function DrawerAppBar(props) {
                 sx={appLogo}
               />
             </Link>
-
           </Typography>
-
           <Box sx={profile}>
             <Box >
               <Avatar

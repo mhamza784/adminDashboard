@@ -17,6 +17,9 @@ export const gridMessage = {
     marginY: "1.5rem",
     boxShadow: 4
 };
+export const checkBox = {
+    boxShadow: 4
+}
 export const tablePadding = {
     padding: "0"
 };

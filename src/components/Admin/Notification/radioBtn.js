@@ -1,13 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Box, } from "@mui/material";
-import { Radio, Checkbox } from '@mui/material';
+import { Radio } from '@mui/material';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { radioContainer, radioButton, radioButtonTitle } from "./style"
 import { useDispatch, useSelector } from "react-redux";
-
 import { GET_ALL_USERS } from "@/redux/types";
 
 export default function RowRadioButtonsGroup(props) {
@@ -15,7 +14,6 @@ export default function RowRadioButtonsGroup(props) {
     const { setSelectData } = props;
     const { allUser, user } = useSelector((state) => state.users);
     const dispatch = useDispatch();
-
 
     const handleChange1 = (event) => {
         setSelectData(allUser)
@@ -28,15 +26,11 @@ export default function RowRadioButtonsGroup(props) {
         setSelectData(allUser?.filter((item) => item.gender == "female"))
     };
 
-
     useEffect(() => {
         dispatch({
             type: GET_ALL_USERS,
         });
     }, [dispatch]);
-
-
-
 
     return (
         <FormControl sx={radioContainer} >
@@ -68,7 +62,6 @@ export default function RowRadioButtonsGroup(props) {
                             value="female"
                             control={<Radio size="small" onClick={handleChange3} />}
                         />
-
                     </RadioGroup>
                 </Box>
             </Box>

@@ -4,6 +4,12 @@
   background: white;
   margin: 10px 0;
 }
+
+.container {
+  width: 100%;
+  padding-bottom: 1rem;
+}
+
 .title {
   font-family: Helvetica;
   font-style: normal;
@@ -13,17 +19,20 @@
   line-height: 36px;
   color: #ffffff;
 }
+
 .formSelect {
   border-radius: 10px;
   margin-top: 10px;
   margin-bottom: 0.4rem;
 }
+
 .center {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 1rem;
 }
+
 .joinButton {
   background: #1eb0c4 !important;
   border-radius: 10px !important;
@@ -34,12 +43,14 @@
   height: 44px;
   margin-top: 1.5rem;
 }
+
 .background {
   height: 100vh;
   background: url("/back.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
+
 .box {
   width: 75%;
   margin: auto;
@@ -50,10 +61,12 @@
   padding: 0.3rem 0;
   margin-top: 0rem;
 }
+
 .font {
   font-family: Helvetica;
   font-style: normal;
 }
+
 .description {
   font-family: Helvetica;
   text-align: center;
@@ -70,10 +83,12 @@
     font-size: 26px;
     line-height: 34px;
   }
+
   .joinButton {
     margin-top: 1rem;
     padding: 0.3rem 1.3rem;
   }
+
   .box {
     width: 85%;
     height: 100%;

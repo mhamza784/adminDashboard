@@ -4,7 +4,7 @@ import { alpha } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
-import SearchBar from "../tableSearchBar";
+import SearchBar from "./tableSearchBar";
 import { toolbarSelected } from "../style"
 
 const EnhancedTableToolbar = (props) => {
@@ -55,6 +55,5 @@ const EnhancedTableToolbar = (props) => {
 EnhancedTableToolbar.propTypes = {
     numSelected: PropTypes.number.isRequired,
 };
-
 
 export default EnhancedTableToolbar

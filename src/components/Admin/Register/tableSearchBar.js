@@ -15,7 +15,6 @@ export default function SearchBarInput(props) {
             component="form"
             sx={searchBarContainer}
         >
-
             <InputBase
                 sx={searchBarInput}
                 placeholder="Search"

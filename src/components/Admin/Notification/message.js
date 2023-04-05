@@ -20,9 +20,8 @@ const message = (props) => {
                 autoComplete="off"
                 sx={messageContainer}
             >
-                <Stack  >
+                <Stack>
                     <Divider sx={dividerStyle} />
-
                     <FormLabel sx={titleLabel}>Title</FormLabel>
                     <TextField
                         value={title}
@@ -31,7 +30,6 @@ const message = (props) => {
                         id="outlined-size-small"
                         size="small"
                         placeholder="Title"
-
                     />
                     <FormLabel sx={messageLabel}>Message</FormLabel>
                     <TextField
@@ -42,13 +40,11 @@ const message = (props) => {
                         onChange={(e) => setMessage(e.target.value)}
                         placeholder="Message"
                     />
-
                     <Box sx={buttonContainer}>
                         <Button sx={buttonStyle} onClick={handleMessage} variant="contained" endIcon={<SendIcon />}>
                             Send
                         </Button>
                     </Box>
-
                 </Stack>
             </Box>
         </>
