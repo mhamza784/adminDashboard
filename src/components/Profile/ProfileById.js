@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import moment from "moment";
-import { Alert, Box, Button, Dialog, DialogContent, DialogContentText, DialogTitle, Grid, IconButton, Paper, Snackbar, Tooltip, Modal } from "@mui/material";
+import { Alert, Box, Button, Grid, IconButton, Paper, Snackbar } from "@mui/material";
 import { useRouter } from "next/router";
 import ImageGallery from "react-image-gallery";
 import ProfileTable from "./ProfileTable";
@@ -17,7 +17,6 @@ const ProfileById = () => {
   const [open, setOpen] = useState(false);
   const [openAre, setOpenAre] = useState(false);
   const dispatch = useDispatch();
-  const [openChat, setOpenChat] = useState(false);
 
 
 
@@ -100,63 +99,6 @@ const ProfileById = () => {
           >
             {singleUser?.name}
           </Box>
-          {/* {userId == user._id ?
-            <Box sx={{ cursor: "pointer", width: "2.4rem", marginTop: "10px" }}>
-              <Tooltip title={translations('toolTip.editProfile')}>
-                <IconButton onClick={() =>
-                  router.push({
-                    pathname: "/profile",
-                    query: { value: true, lang: query.lang },
-                  })
-                } sx={{ color: "black" }} >
-                  <EditIcon />
-                </IconButton>
-              </Tooltip>
-            </Box> :
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-around",
-                alignItems: "center",
-              }}
-            >
-              <Tooltip title={translations('toolTip.yourHotList')} followCursor>
-                <Box
-                  onClick={
-                    hotListYou?.some((data) => data?.hotListId?._id === userId)
-                      ? handleClick
-                      : handleFavorite
-                  }
-                  sx={{ cursor: "pointer", width: "2.4rem", marginTop: "10px" }}
-                >
-                  <Heart
-                    fill={hotListYou?.some(
-                      (data) => data?.hotListId?._id === userId
-                    )}
-                  />
-                </Box>
-              </Tooltip>
-              <Tooltip title={translations('toolTip.yourMessages')} followCursor>
-                <IconButton>
-                  <Box
-                    component="img"
-                    alt="send"
-                    // onClick={handleNavigate}
-                    onClick={() => handleOpen(userId)}
-                    sx={{
-                      cursor: "pointer",
-                      width: "1.7rem",
-                    }}
-                    src="/send.svg"
-                  />
-                </IconButton>
-              </Tooltip>
-              <Tooltip title={translations('toolTip.blockUser')} onClick={handleClickDialog}>
-                <IconButton>
-                  <BlockIcon sx={{ fontSize: "2.35rem !important" }} />
-                </IconButton>
-              </Tooltip>
-            </Box>} */}
         </Box>
         <Box
           sx={{

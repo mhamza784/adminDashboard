@@ -8,10 +8,12 @@ export const logo = {
     paddingX: { sm: "2rem", xs: "1rem" },
     paddingY: "2rem",
     width: "100%",
+    alignItems: 'center'
 }
 export const logoImg = {
     display: "flex",
-    cursor: "pointer"
+    cursor: "pointer",
+    width: { xs: "11rem", sm: "12rem", md: "16rem" }
 }
 export const languageBtn = {
     background: "black !important"

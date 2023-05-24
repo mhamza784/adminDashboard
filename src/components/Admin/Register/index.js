@@ -58,9 +58,10 @@ const NewMessagesUI = () => {
         dispatch(
             singleUser(null)
         )
+        setUserList(filteredUsersAdmin)
         handleSearch()
 
-    }, [dispatch]);
+    }, []);
 
     return (
         <>

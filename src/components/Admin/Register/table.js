@@ -93,7 +93,7 @@ export default function CustomPaginationActionsTable({ item, handleSearch, searc
     useEffect(() => {
         handleSearch()
 
-    }, [item, searchQuery,]);
+    }, [searchQuery,]);
 
 
     return (

@@ -29,6 +29,7 @@ const NewLogin = () => {
     }
     dispatch({ type: ADMIN_LOGIN, payload: { email, password } });
   }, [email, password, dispatch]);
+
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       handleLogin(event);
@@ -46,7 +47,7 @@ const NewLogin = () => {
           <Box
             component="img"
             alt="logos"
-            src="/logo.png"
+            src="/transparentlogowhite.png"
             sx={logoImg}
           />
         </Link>
