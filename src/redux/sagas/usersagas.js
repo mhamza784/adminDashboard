@@ -1,6 +1,7 @@
 import { put, takeEvery, call } from "redux-saga/effects";
-import { createAlert } from "../slices/alert";
+import { createAlert, getLoginError, singleUser } from "../slices/alert";
 import {
+  userLogout,
   createUserAPI,
   userLoginAPI,
   updateUserPasswordAPI,
@@ -53,8 +54,8 @@ export function* getUsersSaga() {
 // todo get user by id
 export function* getUserByIdSaga(action) {
   const { data } = yield getUserByIdAPI(action.payload.id);
-
   yield put(singleUserSlice(data?.data));
+  yield put(singleUser(data?.data));
 }
 
 export function* createUserSaga(action) {
@@ -275,13 +276,13 @@ export function* updateDeactiveUserSaga(action) {
   }
 }
 export function* logoutUserSaga(action) {
-  yield updateUserAPI(action.payload);
+  yield userLogout(action.payload);
   yield put(logoutUserSlice());
   Router.push("/login");
   yield put(
     createAlert({
       type: "success",
-      message: "Logout SuccessFully",
+      message: "Logout Successfully",
       status: true,
     })
   );

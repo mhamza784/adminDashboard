@@ -5,11 +5,6 @@ import { searchUsersSlice } from "../slices/search";
 import { USER_SEARCH } from "../types";
 import Router from "next/router";
 
-// todo get user by id
-// export function* getUserByIdSaga(action) {
-//   yield getUserByIdAPI(action.id);
-//   yield put(setUserSlice(action.id));
-// }
 
 export function* searchUserSaga(action) {
   const users = yield userSearchAPI(action.payload);

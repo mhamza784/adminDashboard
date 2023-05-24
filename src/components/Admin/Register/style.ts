@@ -72,20 +72,21 @@ export const deleteUserContainer = {
     justifyItems: "center",
     alignItems: "center",
     padding: "1.3rem",
-    width: 530
+    paddingX: "2rem",
+    // width: { xs: 530, sm: "inherit" },
 }
 export const warningIcon = {
     color: "#F8BB86",
-    fontSize: "7.5rem"
+    fontSize: { xs: "5.5rem", sm: "7.5rem" }
 }
 export const deleteBtn = {
     ":hover": { bgcolor: "#BF513D", color: "white" },
     backgroundColor: "rgb(221, 107, 85)",
     fontWeight: "600",
     color: "white",
-    width: "11rem",
-    height: "3rem",
-    fontSize: "1rem",
+    width: { sm: "11rem", xs: "9rem" },
+    height: { sm: "3rem", xs: "2.5rem" },
+    fontSize: { sm: "1rem", xs: ".9rem" },
     fontFamily: "'Source Sans Pro',sans-serif !important",
     textTransform: "capitalize",
 }
@@ -99,12 +100,12 @@ export const tableHeadName = {
 export const cancelBtn = {
     ":hover": { bgcolor: "#A6A6A6", color: "white" },
     backgroundColor: "#C1C1C1",
-    fontSize: "1rem",
-    height: "3rem",
+    fontSize: { sm: "1rem", xs: ".9rem" },
+    height: { sm: "3rem", xs: "2.5rem" },
     fontWeight: "600",
     color: "white",
     fontFamily: "'Source Sans Pro',sans-serif !important",
-    width: "7rem",
+    width: { sm: "7rem", xs: "6rem" },
     textTransform: "capitalize"
 }
 export const tableSize = {
@@ -119,7 +120,8 @@ export const ProfileContainer = {
 }
 export const AvatarSize = {
     width: 36,
-    height: 36
+    height: 36,
+    cursor: "pointer"
 }
 export const profileData = {
     px: "1rem",
@@ -130,7 +132,8 @@ export const profileData = {
     fontWeight: "bold",
     fontFamily: "sans-serif",
     color: " #425466",
-    textTransform: "capitalize"
+    textTransform: "capitalize",
+    textAlign: "initial !important"
 }
 export const profileEmail = {
     display: "flex",

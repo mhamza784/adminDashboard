@@ -31,7 +31,7 @@ export default function EnhancedTable({ item, setCheckedData, setSelectData }) {
         setSearchQuery(query);
     }
     const handleSearch = () => {
-        if (searchQuery == "") {
+        if (searchQuery === "") {
             setUserList(item);
             return
         }
@@ -41,7 +41,10 @@ export default function EnhancedTable({ item, setCheckedData, setSelectData }) {
                 user.email.toLowerCase().includes(searchQuery.toLowerCase())
             );
         });
-        setUserList(filteredUsers);
+        const uniqueFilteredUsers = Array.from(new Set(filteredUsers.map((user) => user.id))).map((id) =>
+            filteredUsers.find((user) => user.id === id)
+        );
+        setUserList(uniqueFilteredUsers);
     };
 
     const handleChangePage = (event, newPage) => {

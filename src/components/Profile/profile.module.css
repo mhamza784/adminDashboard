@@ -1,0 +1,14 @@
+.editButton {
+  background: #1eb0c4 !important;
+  font-family: Helvetica;
+  font-style: normal;
+  border-radius: 4px !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  text-transform: capitalize;
+  line-height: 12px !important;
+  text-align: center;
+  color: #ffffff !important;
+  padding: 6px 14px !important;
+  width: 78px;
+}

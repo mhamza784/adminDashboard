@@ -13,17 +13,18 @@ export default function RowRadioButtonsGroup(props) {
 
     const { setSelectData } = props;
     const { allUser, user } = useSelector((state) => state.users);
+    const filteredUsersAdmin = allUser?.filter((user) => user.role !== "ADMIN");
     const dispatch = useDispatch();
 
     const handleChange1 = (event) => {
-        setSelectData(allUser)
+        setSelectData(filteredUsersAdmin)
     }
     const handleChange2 = (event) => {
-        setSelectData(allUser?.filter((item) => item.gender == "male"))
+        setSelectData(filteredUsersAdmin?.filter((item) => item.gender == "male"))
     };
 
     const handleChange3 = (event) => {
-        setSelectData(allUser?.filter((item) => item.gender == "female"))
+        setSelectData(filteredUsersAdmin?.filter((item) => item.gender == "female"))
     };
 
     useEffect(() => {

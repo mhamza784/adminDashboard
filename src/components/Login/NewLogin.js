@@ -29,7 +29,11 @@ const NewLogin = () => {
     }
     dispatch({ type: ADMIN_LOGIN, payload: { email, password } });
   }, [email, password, dispatch]);
-
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleLogin(event);
+    }
+  };
   return (
     <Box
       sx={container}
@@ -86,6 +90,7 @@ const NewLogin = () => {
                   className={style.formFiled}
                   size="small"
                   onChange={(e) => setPassword(e.target.value)}
+                  onKeyPress={handleKeyPress}
                   type={showPassword ? "text" : "password"}
                   InputProps={{
                     endAdornment: (

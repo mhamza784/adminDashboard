@@ -19,7 +19,8 @@ const Item = styled(Paper)(({ theme }) => ({
 const NewMessagesUI = (props) => {
     const { setCheckedData, setTitle, setMessage, handleMessage, checkedData, selectedMembers, title, message } = props;
     const { allUser, user } = useSelector((state) => state.users);
-    const [selectData, setSelectData] = useState(allUser);
+    const filteredUsersAdmin = allUser?.filter((user) => user.role !== "ADMIN");
+    const [selectData, setSelectData] = useState(filteredUsersAdmin);
 
 
     return (

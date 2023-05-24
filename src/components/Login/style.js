@@ -11,6 +11,7 @@ export const logo = {
 }
 export const logoImg = {
     display: "flex",
+    cursor: "pointer"
 }
 export const languageBtn = {
     background: "black !important"

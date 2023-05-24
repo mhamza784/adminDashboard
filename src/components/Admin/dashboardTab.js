@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -12,10 +13,11 @@ import NotificationTab from "./Notification";
 import { TabContainer, TabsBox, TabsLink, TabsBody, BoxMargin, iconColor, TabsBoxMb } from "./style";
 import { Hidden } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
+import { useDispatch, useSelector } from 'react-redux'
+import { singleUser } from '@/redux/slices/alert'
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
-
     return (
         <div
             role="tabpanel"
@@ -48,13 +50,20 @@ function a11yProps(index) {
 
 export default function VerticalTabs() {
     const [value, setValue] = React.useState(0);
+    const dispatch = useDispatch()
     const [label, setLabel] = React.useState("Registered");
-
     const handleChange = (event, newValue) => {
         setValue(newValue);
         setLabel(event.target.name);
     };
 
+
+    useEffect(() => {
+        dispatch(
+            singleUser(null)
+        )
+
+    }, [])
     return (
         <Box
             sx={TabContainer}

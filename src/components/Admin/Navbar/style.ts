@@ -18,11 +18,13 @@ export const appBar = {
 };
 export const appLogo = {
     display: "flex",
-    width: { lg: "12rem", xl: "12rem", md: "12rem", sm: "11rem", xs: "8rem", },
-    marginLeft: "-.6rem",
+    width: { lg: "12rem", xl: "12rem", md: "12rem", sm: "11rem", xs: "9.5rem", },
+    marginLeft: "-.8rem",
+    cursor: "pointer"
 };
 export const profile = {
-    display: "flex"
+    display: "flex",
+    cursor: "pointer"
 }
 export const profileMenu = {
     marginTop: "2.5rem"

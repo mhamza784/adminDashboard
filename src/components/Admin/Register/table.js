@@ -11,8 +11,10 @@ import { searchData } from "@/redux/slices/users";
 import DeleteUser from './TableComponent/deleteUser';
 import TableHeadLabel from "./TableComponent/tableHead";
 import TablePaginationRow from './TableComponent/tablePagination';
+import { useRouter } from 'next/router'
 
 function TablePaginationActions(props) {
+
     const theme = useTheme();
     const { count, page, rowsPerPage, onPageChange } = props;
 
@@ -44,8 +46,9 @@ TablePaginationActions.propTypes = {
     rowsPerPage: PropTypes.number.isRequired,
 };
 
-export default function CustomPaginationActionsTable({ item, handleSearch, searchQuery, list }) {
+export default function CustomPaginationActionsTable({ item, handleSearch, searchQuery, list, setUserList }) {
     const { allUser, user } = useSelector((state) => state.users);
+    const router = useRouter();
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
     const [deleteID, setDeleteID] = useState();
@@ -55,6 +58,14 @@ export default function CustomPaginationActionsTable({ item, handleSearch, searc
     const deleteUser = (id) => {
         setDeleteID(id)
         setOpen(true);
+    }
+    const handleNavigateId = (item) => {
+        const userId = item?._id
+        debugger
+        router.push(`/admin/${userId}`);
+        // router.push({
+        //     pathname: `/admin/${userId}`
+        // });
     }
     const handleDelete = () => {
         dispatch({ type: DELETE_USER_BY_ID, payload: { id: deleteID } });
@@ -68,11 +79,13 @@ export default function CustomPaginationActionsTable({ item, handleSearch, searc
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
+        setUserList(item)
     };
 
     const handleChangeRowsPerPage = (event) => {
         setRowsPerPage(parseInt(event.target.value, 10));
         setPage(0);
+        setUserList(item)
     };
     const emptyRows =
         page > 0 ? Math.max(0, (1 + page) * rowsPerPage - Object.keys(list).length) : 0;
@@ -81,6 +94,7 @@ export default function CustomPaginationActionsTable({ item, handleSearch, searc
         handleSearch()
 
     }, [item, searchQuery,]);
+
 
     return (
         <Paper sx={{ boxShadow: 3 }} >
@@ -99,10 +113,11 @@ export default function CustomPaginationActionsTable({ item, handleSearch, searc
                                         <Avatar
                                             sx={AvatarSize}
                                             alt="logo"
+                                            onClick={() => handleNavigateId(row)}
                                             src={
                                                 row?.myPictures?.length
                                                     ? `${BASE_URL_API}${row?.myPictures[0]}`
-                                                    : "photo.png"
+                                                    : "/photo.png"
                                             }
                                         />
                                         <Box sx={profileData} >
@@ -122,7 +137,7 @@ export default function CustomPaginationActionsTable({ item, handleSearch, searc
 
                                 <TableCell align="center">
                                     <Box sx={iconContainer}>
-                                        <Box onClick={() => deleteUser(row._id)} component="img" src="deleteicon.png" width="15px" height="15px" sx={iconColor} />
+                                        <Box onClick={() => deleteUser(row._id)} component="img" src="/deleteicon.png" width="15px" height="15px" sx={iconColor} />
                                     </Box>
                                 </TableCell>
                             </TableRow>

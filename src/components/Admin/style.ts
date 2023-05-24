@@ -55,6 +55,7 @@ export const TabsLink = {
     fontWeight: "bold",
     fontFamily: "sans-serif",
     color: "#19191D",
+    marginLeft: { xs: ".5rem", md: "0rem" }
 };
 export const TabsBody = {
     width: '100%',

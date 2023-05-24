@@ -14,7 +14,7 @@ const DeleteUser = ({ handleClose, handleDelete, open }) => {
         >
             <Box sx={deleteUserContainer}>
                 <ErrorOutlineOutlinedIcon sx={warningIcon} />
-                <DialogTitle sx={{ fontWeight: 600, fontSize: "2rem" }} id="alert-dialog-title">
+                <DialogTitle sx={{ fontWeight: 600, fontSize: { sm: "2rem", xs: "1.5rem" } }} id="alert-dialog-title">
                     {"Are you sure?"}
                 </DialogTitle>
                 <DialogContent>

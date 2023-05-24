@@ -5,7 +5,7 @@ import API from "./base.service";
 export const getAllUsersAPI = async () => {
   return API.get(`/user/pag`);
 };
-
+export const userLogout = async user => API.get(`/user/logout/${user.id}`)
 export const createUserAPI = async (user) => API.post(`/user/signUp`, user);
 export const forgetPasswordUserAPI = async (user) => API.post(`/user/forgetPassword`, user);
 

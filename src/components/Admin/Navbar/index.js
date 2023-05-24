@@ -11,6 +11,7 @@ import { Menu, MenuItem } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { mainContainer, typography, AvatarSize, appBar, appLogo, profileMenu, profile } from "./style";
 import { LOGOUT } from "@/redux/types";
+import { useRouter } from 'next/router'
 
 function DrawerAppBar(props) {
   const { user, token } = useSelector((state) => state.users);
@@ -18,11 +19,12 @@ function DrawerAppBar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const dispatch = useDispatch();
+  const router = useRouter();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleLogout = () => {
-    dispatch({ type: LOGOUT, payload: { onlineNow: false, id: user?._id } });
+    dispatch({ type: LOGOUT, payload: { id: user?._id } });
   };
   return (
     <Box sx={mainContainer}>
@@ -37,11 +39,11 @@ function DrawerAppBar(props) {
             component="div"
             sx={typography}
           >
-            <Link href="/">
+            <Link href={token ? { pathname: "/admin" } : { pathname: "/" }}>
               <Box
                 component="img"
                 alt="logo"
-                src="MyLatinLoveLogo.png"
+                src="/MyLatinLoveLogo.png"
                 sx={appLogo}
               />
             </Link>
@@ -50,7 +52,7 @@ function DrawerAppBar(props) {
             <Box >
               <Avatar
                 alt="profile"
-                src="Larry.png"
+                src="/Larry.png"
                 sx={AvatarSize}
                 onClick={handleClick}
               />
